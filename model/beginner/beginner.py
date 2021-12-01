@@ -22,5 +22,13 @@ if __name__ == "__main__":
         os.makedirs(output_folder)
 
     params = {
+        'man': {
+            'collection': 'Man',
+            'object': 'metarig',
+            'fixed_params': {},
+            'randomized_params': {
+                ''
+            }
+        }
     }
     libpixelart.pixelart_test(params, limit=2, output_folder=output_folder)
