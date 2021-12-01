@@ -1,16 +1,26 @@
-import sys
+import sys, os, importlib
+from os import path
+
+VERSION = '0.0.1'
 
 # NOTE configure the pixelart directory
-pixelart_dir = 'C:\\Users\\Rain\\Documents\\PixelArt\\model'
-if pixelart_dir not in sys.path:
-    sys.path.append(pixelart_dir)
-from pixelart.libpixelart import *
+dir_path = path.dirname(path.realpath(__file__))
+top_dir = path.dirname(path.dirname(path.dirname(dir_path)))
+scripts_dir = path.join(top_dir, 'scripts')
+print(f'{scripts_dir}')
+if scripts_dir not in sys.path:
+    sys.path.append(scripts_dir)
+from pixelart import libpixelart
 
-
-VERSION = '0.0.3'
+# force reload the pixelart library
+importlib.reload(libpixelart)
 
 if __name__ == "__main__":
-    print(f'Version: {VERSION}')
 
-    
-    pixelart_test(10, output_folder='C:\\Users\\Rain\\Documents\\PixelArt\\render')
+    output_folder = path.join(top_dir, 'render')
+    if not path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    params = {
+    }
+    libpixelart.pixelart_test(params, limit=2, output_folder=output_folder)
