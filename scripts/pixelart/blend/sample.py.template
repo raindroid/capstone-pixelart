@@ -1,55 +1,60 @@
-import bpy
-import os, sys
-from math import pi
-from os import path
+import os, sys, random, pprint
 from pathlib import Path
 
-print(__file__)
-pixelart_path = Path("_$$pixelart_path")
+# =============================================================================
+# =========================== START Blender Script ============================
+print(f"Start executing blender script from {__file__}")
+pixelart_path = Path("__template_pixelart_path")
+
 sys.path.append(os.path.dirname(__file__))
 sys.path.append(str(pixelart_path / "scripts/pixelart/blend"))
+import blender_operation as blender
+import libpixelart as pixelart
 
-from blender_operation import BlenderOp
-import libpixelart
+# load parameters (replace remplates)
+output_path = pixelart_path / "__template_output_path"
+camera_param = __template_camera_param
+objects_param = __template_objects_param
+scene_param = __template_scene_param
 
+# other settings
+settings = __template_settings
 
-BlenderOp.remove_object("Cube")
+# remove the default Cube in the blender
+blender.remove_object("Cube")
 
-BlenderOp.import_blend_model(
-    str(pixelart_path / "model/begin_sep/bedroom.blend"), "Collection", "Bedroom"
+# append scene model(s)
+blender.import_blend_model(
+    str(pixelart_path / "models/scenes" /
+        scene_param['path']), "Collection", scene_param['collection']
 )
-BlenderOp.import_blend_model(
-    str(pixelart_path / "model/begin_sep/no_cloth_man.blend"), "Collection", "Man"
-)
 
-BlenderOp.remove_object_type()
-cam = BlenderOp.create_camera()
-cam.location = (5.6, 0, 1.12)
-cam.rotation_euler = (0, pi / 2, 0)
-cam.delta_rotation_euler = (pi / 2, 0, 0)
-cam.data.dof.use_dof = True
-cam.data.dof.focus_object = bpy.data.objects["body"]
-cam.data.dof.aperture_fstop = 1.2
-
-BlenderOp.save_as_mainfile(directory=str(pixelart_path / "work"))
+# append all objects
+objects_list = objects_param.keys()
+for object_name in objects_list:
+    object_param = objects_param[object_name]
+    blender.import_blend_model(
+        str(pixelart_path / "models/objects" /
+            object_param['path']), "Collection", object_name
+    )
 
 
-# start rendering
-output_folder = str(pixelart_path / "render")
-if not path.exists(output_folder):
-    os.makedirs(output_folder)
+# =============================================================================
+# ==================== START rendering and generating labels ==================
+render_path = output_path / "render"
+render_path.mkdir(parents=True, exist_ok=True)
 
-params = {
-    "man": {
-        "collection": "Man",
-        "object": "metarig",
-        "fixed_params": {},
-        "randomized_params": {""},
-    }
-}
+result = pixelart.render_images(
+    camera_param,
+    scene_param, objects_param, limit=random.randint(*settings['image_count']),
+    render_path=str(render_path))
 
-result = libpixelart.pixelart_test(params, limit=2, output_folder=output_folder)
-if result == libpixelart.CODE_SUCCESS:
-    print("PixelArt script completed successfully")
-else:
-    print(f"PixelArt script failed with result code {result}")
+blender.save_as_mainfile(directory=str(pixelart_path / "work"))
+
+if 'error' in result:
+    print(f"PixelArt script failed: {result['error']}")
+
+# =============================================================================
+# ======================= START rendering masks ===============================
+blender.save_as_mainfile(directory=str(
+    pixelart_path / "work"), filename="mask")

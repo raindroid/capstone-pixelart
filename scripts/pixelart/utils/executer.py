@@ -1,5 +1,7 @@
 from typing import Optional
-import sys, subprocess, os
+import sys
+import subprocess
+import os
 from pathlib import Path
 
 
@@ -49,38 +51,3 @@ class PixelartExccuter(object):
         for line in iter(self._process.stderr.readline, b""):
             print(line.decode("utf-8"), end="")
         self._process.wait()
-
-
-if __name__ == "__main__":
-    # exe = PixelartExccuter(
-    #     "C:\\Program Files\\Blender Foundation\\Blender 2.93",
-    #     "M:\\ECE496\\PixelArt\\model\\beginner\\beginner.py",
-    #     "M:\\ECE496\\PixelArt\\model\\beginner\\beginner.blend",
-    # )
-
-    blender_dir = "C:\\Program Files\\Blender Foundation\\Blender 2.93"
-    pixelart_path = Path("M:\\ECE496\\PixelArt\\")
-    script_templace_path = str(
-        pixelart_path / "scripts/pixelart/blend/sample.py.template"
-    )
-    script_path = str(pixelart_path / "work/sample.py")
-
-    # create new working directory
-    (pixelart_path / "work").mkdir(parents=True, exist_ok=True)
-    configs = {"replacement": {"pixelart_path": str(pixelart_path).replace('\\', '\\\\')}}
-
-    with open(script_templace_path, "r") as tempfile, open(script_path, "w") as outfile:
-        for line in tempfile:
-            for replacement in configs["replacement"].items():
-                key = f"_$${replacement[0]}"
-                value = replacement[1]
-                if key in line:
-                    line = line.replace(key, value)
-            outfile.write(line)
-
-    exe = PixelartExccuter(
-        blender_dir,
-        script_path,
-    )
-    exe.run()
-    exe.wait()
