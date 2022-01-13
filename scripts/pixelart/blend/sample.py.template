@@ -5,6 +5,7 @@ from pathlib import Path
 # =========================== START Blender Script ============================
 print(f"Start executing blender script from {__file__}")
 pixelart_path = Path("__template_pixelart_path")
+work_directory = str(pixelart_path / "work")
 
 sys.path.append(os.path.dirname(__file__))
 sys.path.append(str(pixelart_path / "scripts/pixelart/blend"))
@@ -44,17 +45,17 @@ for object_name in objects_list:
 render_path = output_path / "render"
 render_path.mkdir(parents=True, exist_ok=True)
 
+debug = True
 result = pixelart.render_images(
     camera_param,
     scene_param, objects_param, limit=random.randint(*settings['image_count']),
-    render_path=str(render_path))
+    render_path=str(render_path), work_directory=work_directory, debug=debug)
 
-blender.save_as_mainfile(directory=str(pixelart_path / "work"))
+blender.save_as_mainfile(directory=work_directory)
 
 if 'error' in result:
     print(f"PixelArt script failed: {result['error']}")
 
 # =============================================================================
 # ======================= START rendering masks ===============================
-blender.save_as_mainfile(directory=str(
-    pixelart_path / "work"), filename="mask")
+blender.save_as_mainfile(directory=work_directory, filename="mask")

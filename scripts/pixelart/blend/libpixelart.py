@@ -51,7 +51,9 @@ def render_setup():
     bpy.context.scene.cycles.preview_samples = 8
 
 
-def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict, limit: int, render_path: str):
+def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
+                  limit: int, render_path: str, work_directory: str,
+                  debug: bool = False):
 
     area, space = blender.get_view3d()
     if not area or not space:
@@ -99,11 +101,16 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict, li
             update_camera(camera_param_random, camera)
 
             # render image
-            image_path = os.path.join(render_path, f'img_f{fstop:3.1f}_{image_id}')
+            image_path = os.path.join(
+                render_path, f'img_f{fstop:3.1f}_{image_id}')
             blender.render_image(image_path)
 
+            if debug:
+                blender.save_as_mainfile(
+                    directory=work_directory, filename=f"id_{image_id}")
+
             break
-    
+
     return result
 
 
