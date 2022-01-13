@@ -29,13 +29,13 @@ def update_camera(camera_param: Optional[Dict] = None, camera=None):
         camera.location = camera_param.get('location', camera.location)
         camera.rotation_euler = camera_param.get(
             'rotation', camera.rotation_euler)
+        camera.delta_rotation_euler = camera_param.get(
+            'delta_rotation', camera.delta_rotation_euler)
         camera.data.lens = camera_param.get('lens', camera.data.lens)
         camera.data.dof.focus_object = camera_param.get(
             'focus_object', camera.data.dof.focus_object)
         camera.data.dof.aperture_fstop = camera_param.get(
             'aperture_fstop', camera.data.dof.aperture_fstop)
-        camera.delta_rotation_euler[0] = camera_param.get(
-            'delta_rotation', camera.delta_rotation_euler[0])
 
 
 def update_location(obj: bpy.types.Object):
@@ -94,9 +94,9 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
                 "focus_object": focus_object,
                 "lens": random.choice(camera_param['lens']),
                 "aperture_fstop": fstop,
-                "delta_rotation": random.uniform(*camera_param['delta_rotation']),
                 "location": Vector(randomize_list(camera_settings['location'])),
                 "rotation": Euler(randomize_list(camera_settings['rotation']), 'XYZ'),
+                "delta_rotation": Euler(randomize_list(camera_settings['delta_rotation']), 'XYZ'),
             }
             update_camera(camera_param_random, camera)
 
