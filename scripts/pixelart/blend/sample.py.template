@@ -45,7 +45,7 @@ for object_name in objects_list:
 render_path = output_path / "render"
 render_path.mkdir(parents=True, exist_ok=True)
 
-debug = True
+debug = False
 result = pixelart.render_images(
     camera_param,
     scene_param, objects_param, limit=random.randint(*settings['image_count']),

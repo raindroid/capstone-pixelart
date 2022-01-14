@@ -7,10 +7,23 @@ from mathutils import Vector, Euler
 from typing import Iterable, Literal, Optional, Callable, Any, Dict
 import bpy
 import blender_operation as blender
+import numpy
 
 
-def randomize_list(l: Iterable) -> tuple:
-    return tuple(random.uniform(*r) for r in l)
+def randomize_list(l: Iterable, normal: bool = False) -> tuple:
+    if normal:
+        res = []
+        for r in l:
+            v = None if r[0] != r[1] else r[0]
+            r = sorted(list(r))
+            center = (r[0] + r[1]) / 2
+            scale = abs(r[1] - r[0]) / 2
+            while v is None or v < r[0] or v > r[1]:
+                v = numpy.random.normal(center, scale)
+            res.append(v)
+        return tuple(res)
+    else:
+        return tuple(random.uniform(*r) for r in l)
 
 
 def update_camera(camera_param: Optional[Dict] = None, camera=None):
@@ -42,13 +55,18 @@ def update_location(obj: bpy.types.Object):
     pass
 
 
-def render_setup():
+def render_setup(production: bool = True) -> None:
     bpy.context.scene.render.engine = 'CYCLES'
     bpy.context.scene.cycles.use_denoising = True
     bpy.context.scene.cycles.preview_denoiser = 'AUTO'
-    bpy.context.scene.cycles.preview_denoising_start_sample = 2
-    bpy.context.scene.cycles.samples = 16
-    bpy.context.scene.cycles.preview_samples = 8
+    if production:
+        bpy.context.scene.cycles.preview_denoising_start_sample = 4
+        bpy.context.scene.cycles.samples = 128
+        bpy.context.scene.cycles.preview_samples = 32
+    else:
+        bpy.context.scene.cycles.preview_denoising_start_sample = 2
+        bpy.context.scene.cycles.samples = 16
+        bpy.context.scene.cycles.preview_samples = 8
 
 
 def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
@@ -76,7 +94,7 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
     bpy.context.scene.render.resolution_y = 1080  # image height
 
     # setup render engine
-    render_setup()
+    render_setup(not debug)
 
     objects_list = list(objects_param.keys())
     for i in range(limit):
@@ -89,27 +107,26 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
 
         # randomize the camera parameters
         camera_settings = random.choice(scene_param['camera'])
+        camera_param_random = {
+            "focus_object": focus_object,
+            "lens": random.choice(camera_param['lens']),
+            "location": Vector(randomize_list(camera_settings['location'], normal=True)),
+            "rotation": Euler(randomize_list(camera_settings['rotation'], normal=True), 'XYZ'),
+            "delta_rotation": Euler(randomize_list(camera_settings['delta_rotation'], normal=True), 'XYZ'),
+        }
         for fstop in camera_param['fstop']:
-            camera_param_random = {
-                "focus_object": focus_object,
-                "lens": random.choice(camera_param['lens']),
-                "aperture_fstop": fstop,
-                "location": Vector(randomize_list(camera_settings['location'])),
-                "rotation": Euler(randomize_list(camera_settings['rotation']), 'XYZ'),
-                "delta_rotation": Euler(randomize_list(camera_settings['delta_rotation']), 'XYZ'),
-            }
+            camera_param_random["aperture_fstop"] = fstop
             update_camera(camera_param_random, camera)
 
             # render image
             image_path = os.path.join(
-                render_path, f'img_f{fstop:3.1f}_{image_id}')
+                render_path, f'img_{image_id}_f{fstop:3.1f}')
             blender.render_image(image_path)
 
             if debug:
                 blender.save_as_mainfile(
                     directory=work_directory, filename=f"id_{image_id}")
-
-            break
+                break
 
     return result
 
