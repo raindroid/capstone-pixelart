@@ -39,16 +39,19 @@ def update_camera(camera_param: Optional[Dict] = None, camera=None):
 
         return camera
     else:
-        camera.location = camera_param.get('location', camera.location)
-        camera.rotation_euler = camera_param.get(
-            'rotation', camera.rotation_euler)
-        camera.delta_rotation_euler = camera_param.get(
-            'delta_rotation', camera.delta_rotation_euler)
         camera.data.lens = camera_param.get('lens', camera.data.lens)
-        camera.data.dof.focus_object = camera_param.get(
-            'focus_object', camera.data.dof.focus_object)
         camera.data.dof.aperture_fstop = camera_param.get(
             'aperture_fstop', camera.data.dof.aperture_fstop)
+
+        if 'location' in camera_param:
+            camera.location = Vector(camera_param['location'])
+        if 'rotation' in camera_param:
+            camera.rotation_euler = Euler(camera_param['rotation'], 'XYZ')
+        if 'delta_rotation' in camera_param:
+            camera.delta_rotation_euler = Euler(camera_param['delta_rotation'], 'XYZ')
+        if 'focus_object' in camera_param:
+            camera.data.dof.focus_object = blender.get_object(
+                camera_param.get('focus_object'))
 
 
 def update_location(obj: bpy.types.Object):
@@ -78,7 +81,7 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
         return "No blender area or space available"
 
     # clear the result
-    result = {}
+    result = []
 
     # setup initial camera
     camera = update_camera()
@@ -89,7 +92,7 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
     blender.set_shading(space, 'RENDERED')
 
     # setup output files
-    def generate_image_id(): return f'{uuid.uuid4().hex}.jpg'
+    def generate_image_id(): return f'{uuid.uuid4().hex}'
     bpy.context.scene.render.resolution_x = 1920  # image width
     bpy.context.scene.render.resolution_y = 1080  # image height
 
@@ -97,31 +100,45 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
     render_setup(not debug)
 
     objects_list = list(objects_param.keys())
-    for i in range(limit):
+    render_count = 0
+    while render_count < limit:
         image_id = generate_image_id()
         # randomize each object
 
         # randome select focus_object
-        focus_object = blender.get_object(
-            objects_param[random.choice(objects_list)]['object'])
+        focus_object = objects_param[random.choice(objects_list)]['object']
 
         # randomize the camera parameters
         camera_settings = random.choice(scene_param['camera'])
         camera_param_random = {
             "focus_object": focus_object,
             "lens": random.choice(camera_param['lens']),
-            "location": Vector(randomize_list(camera_settings['location'], normal=True)),
-            "rotation": Euler(randomize_list(camera_settings['rotation'], normal=True), 'XYZ'),
-            "delta_rotation": Euler(randomize_list(camera_settings['delta_rotation'], normal=True), 'XYZ'),
+            "location": randomize_list(camera_settings['location']),
+            "rotation": randomize_list(camera_settings['rotation']),
+            "delta_rotation": randomize_list(camera_settings['delta_rotation']),
         }
+
+        # collision detection
+        collision = False
+        if collision: continue
+        render_count += 1
+        result.append({'camera_settings': camera_param_random,
+                       'images': []})
+
+        # test with all f_stop values
         for fstop in camera_param['fstop']:
             camera_param_random["aperture_fstop"] = fstop
             update_camera(camera_param_random, camera)
 
             # render image
-            image_path = os.path.join(
-                render_path, f'img_{image_id}_f{fstop:3.1f}')
+            file_name = f'img_{image_id}_f{fstop:3.1f}'
+            image_path = os.path.join(render_path, file_name)
             blender.render_image(image_path)
+
+            result[-1]['images'].append({
+                'fstop': fstop,
+                'filename': file_name
+            })
 
             if debug:
                 blender.save_as_mainfile(

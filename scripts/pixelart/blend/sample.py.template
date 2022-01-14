@@ -1,5 +1,6 @@
 import os, sys, random, pprint
 from pathlib import Path
+import json
 
 # =============================================================================
 # =========================== START Blender Script ============================
@@ -59,3 +60,9 @@ if 'error' in result:
 # =============================================================================
 # ======================= START rendering masks ===============================
 blender.save_as_mainfile(directory=work_directory, filename="mask")
+
+# =============================================================================
+# ======================= SAVE output file ====================================
+dataset_path = output_path / "dataset.json"
+with open(dataset_path, 'w') as dataset_fp:
+    json.dump(result, dataset_fp)

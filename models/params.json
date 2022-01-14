@@ -4,7 +4,7 @@
     "config_count": 1,
     "output_path": "generated",
     "settings": {
-      "image_count": [10,20]
+      "image_count": [1,2]
     }
   },
   "camera": {
