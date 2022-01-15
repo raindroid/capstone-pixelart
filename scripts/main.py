@@ -1,5 +1,6 @@
 from pixelart.utils.executer import PixelartExccuter
 from pixelart.utils.params import PixelartParam
+from localConfig import local_config
 
 from pprint import pprint, pformat
 from pathlib import Path
@@ -7,11 +8,12 @@ import random
 
 # =================================================================
 
-# please replace following path with your configuration
+# please replace following path with your configuration in the **localConfig.py** file
+# DO NOT MODIFY THIS FILE DIRECTLY!!!
 # path to the directory containing blender executable
-blender_dir = "C:\\Program Files\\Blender Foundation\\Blender 2.93"
+blender_dir = local_config['blender_dir']
 # path to the directory containing PixelArt project
-pixelart_path = Path("M:\\ECE496\\PixelArt\\")
+pixelart_path = Path(local_config['pixelart_path'])
 
 
 # =================================================================

@@ -46,10 +46,16 @@ for object_name in objects_list:
 render_path = output_path / "render"
 render_path.mkdir(parents=True, exist_ok=True)
 
-debug = False
+debug = True
+render_settings = {
+    "image_limit": random.randint(*settings['image_count']),
+    "overlap_object_retry_limit": settings['overlap_object_retry_limit'],
+    "overlap_retry_limit": settings['overlap_retry_limit'],
+    "bone_trans_retry_limit": settings['bone_trans_retry_limit'],
+}
 result = pixelart.render_images(
     camera_param,
-    scene_param, objects_param, limit=random.randint(*settings['image_count']),
+    scene_param, objects_param, settings=render_settings,
     render_path=str(render_path), work_directory=work_directory, debug=debug)
 
 blender.save_as_mainfile(directory=work_directory)

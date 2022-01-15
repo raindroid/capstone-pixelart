@@ -27,11 +27,20 @@ def get_object(object: str):
     return bpy.data.objects[object]
 
 
-def get_objects(collectionName: str, condition: Optional[Callable[[Any], Any]] = None):
+def get_check_object(object: str, collection: str):
+    objects = get_objects(collection, lambda obj: obj.name == object)
+    if len(objects) != 1:
+        raise ValueError(
+            f"No object {object} found in {collection}, possibly a duplicate object name. Please check before proceed")
+
+    return objects[0]
+
+
+def get_objects(collection_name: str, condition: Optional[Callable[[Any], Any]] = None):
     if condition:
-        return list(filter(condition, bpy.data.collections.get(collectionName).all_objects))
+        return list(filter(condition, bpy.data.collections.get(collection_name).all_objects))
     else:
-        return list(bpy.data.collections.get(collectionName).all_objects)
+        return list(bpy.data.collections.get(collection_name).all_objects)
 
 
 def remove_object(object: str) -> None:
@@ -70,12 +79,14 @@ def save_as_mainfile(directory: str, filename: str = "output"):
     # save to the directory
     bpy.ops.wm.save_as_mainfile(filepath=str(dir_path / filename))
 
+
 def render_image(filename: str):
     # set output path
     bpy.context.scene.render.filepath = filename
 
     # render the image
     bpy.ops.render.render(write_still=True)
+
 
 def create_camera(name: str = "MainCamera", dataname: Optional[str] = None):
     camera = bpy.data.cameras.new(name=name if dataname == None else dataname)
@@ -104,9 +115,9 @@ def detect_overlap(obj1, obj2, debug=False) -> bool:
     # Test if overlap
     if bvh1.overlap(bvh2):
         if debug:
-            print("Overlap")
+            print(f"Overlap detected for {obj1.name} and {obj2.name}")
         return True
     else:
         if debug:
-            print("No overlap")
+            print(f"No overlap detected for {obj1.name} and {obj2.name}")
         return False
