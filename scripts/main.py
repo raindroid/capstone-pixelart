@@ -54,7 +54,7 @@ for i in range(params.generator['config_count']):
 
     # generate new configuration
     configs = {"replacement": {
-        "debug": str(True),
+        "debug": str(False),
         "pixelart_path": str(pixelart_path).replace('\\', '/'),
         "output_path": str(params.generator['output_path']).replace('\\', '/'),
         "settings": pformat(params.generator['settings'], width=80),
