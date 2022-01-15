@@ -4,8 +4,8 @@ from localConfig import local_config
 
 from pprint import pprint, pformat
 from pathlib import Path
-import random
-
+import random, sys
+print(sys.version_info)
 # =================================================================
 
 # please replace following path with your configuration in the **localConfig.py** file

@@ -20,7 +20,11 @@ class PixelartExccuter(object):
             blend:          path to blend file (optional)
             background:     bool to run background or with UI (default: True)
         """
-        self._blender = "blender.exe" if os.name == "nt" else "blender"
+        self._blender = "blender"
+        if sys.platform == "win32":
+            self._blender = "blender.exe"
+        elif sys.platform == "darwin":
+            self._blender = "./blender"
         self._blender_dir = blender_dir
         self._script = script
         self._blend = blend
@@ -36,7 +40,7 @@ class PixelartExccuter(object):
             command.extend(["--python", self._script])
         print(f"Executing command {' '.join(command)}")
         self._process = subprocess.Popen(
-            command,
+            ' '.join(command),
             shell=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
