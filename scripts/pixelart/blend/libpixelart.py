@@ -104,10 +104,10 @@ def render_setup(production: bool = True) -> None:
         bpy.context.scene.cycles.samples = 128
         bpy.context.scene.cycles.preview_samples = 32
     else:
-        bpy.context.scene.render.resolution_x = 640  # image width
-        bpy.context.scene.render.resolution_y = 360  # image height
+        bpy.context.scene.render.resolution_x = 960  # image width
+        bpy.context.scene.render.resolution_y = 540  # image height
         bpy.context.scene.cycles.preview_denoising_start_sample = 1
-        bpy.context.scene.cycles.samples = 8
+        bpy.context.scene.cycles.samples = 12
         bpy.context.scene.cycles.preview_samples = 4
 
 
@@ -287,7 +287,7 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
             # render image
             file_name = f'img_{image_id}_f{fstop:3.1f}'
             image_path = os.path.join(render_path, file_name)
-            blender.render_image(image_path)
+            blender.render_image(image_path, work_directory)
 
             result[-1]['images'].append({
                 'fstop': fstop,

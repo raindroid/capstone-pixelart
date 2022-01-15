@@ -1,7 +1,7 @@
 # This file contains wrapper functions of common blender functions
 
 from typing import Literal, Optional, Callable, Any, Dict
-import os
+import os, sys
 from pathlib import Path
 
 import bpy
@@ -83,12 +83,26 @@ def save_as_mainfile(directory: str, filename: str = "output"):
     bpy.ops.wm.save_as_mainfile(filepath=str(dir_path / filename))
 
 
-def render_image(filename: str):
+def render_image(filename: str, work_directory: str):
     # set output path
     bpy.context.scene.render.filepath = filename
+    print(f"Start rendering to filepath {filename} ...")
+
+    # redirect output to file log temporarily
+    logfile = Path(work_directory, "blender_render.log")
+    open(logfile, 'a').close()
+    old = os.dup(1)
+    sys.stdout.flush()
+    os.close(1)
+    os.open(logfile, os.O_WRONLY)
 
     # render the image
     bpy.ops.render.render(write_still=True)
+
+    # disable output redirection
+    os.close(1)
+    os.dup(old)
+    os.close(old)
 
 
 def create_camera(name: str = "MainCamera", dataname: Optional[str] = None):
@@ -121,8 +135,6 @@ def detect_overlap(obj1, obj2, debug=False) -> bool:
             print(f"Overlap detected for {obj1.name} and {obj2.name}")
         return True
     else:
-        if debug:
-            print(f"No overlap detected for {obj1.name} and {obj2.name}")
         return False
 
 # The following functions are used to check if objects are within the camera's view range

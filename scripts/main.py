@@ -19,8 +19,8 @@ pixelart_path = Path(local_config['pixelart_path'])
 
 # =================================================================
 # ================= START PixelArt ================================
-
-print("Started executing pixel art")
+debug_mode = False
+print(f"Started executing pixel art, debug_mode: {debug_mode}")
 
 # load configuration file
 params = PixelartParam(str(pixelart_path / "models/params.json"))
@@ -64,7 +64,7 @@ for i in range(params.generator['config_count']):
 
     # generate new configuration
     configs = {"replacement": {
-        "debug": str(False),
+        "debug": str(True),
         "pixelart_path": str(pixelart_path).replace('\\', '/'),
         "output_path": str(params.generator['output_path']).replace('\\', '/'),
         "work_path": str(work_path).replace('\\', '/'),
