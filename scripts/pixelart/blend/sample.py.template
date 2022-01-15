@@ -19,6 +19,7 @@ output_path = pixelart_path / "__template_output_path"
 camera_param = __template_camera_param
 objects_param = __template_objects_param
 scene_param = __template_scene_param
+debug = __template_debug
 
 # clear output output folders
 if work_path.exists() and work_path.is_dir():
@@ -53,12 +54,12 @@ for object_name in objects_list:
 render_path = output_path / "render"
 render_path.mkdir(parents=True, exist_ok=True)
 
-debug = True
 render_settings = {
     "image_limit": random.randint(*settings['image_count']),
     "overlap_object_retry_limit": settings['overlap_object_retry_limit'],
     "overlap_retry_limit": settings['overlap_retry_limit'],
     "bone_trans_retry_limit": settings['bone_trans_retry_limit'],
+    "camera_retry_limit": settings['camera_retry_limit'],
 }
 result = pixelart.render_images(
     camera_param,

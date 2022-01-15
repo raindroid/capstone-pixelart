@@ -192,11 +192,13 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
                         overlap = True
                         # generate random location
                         for bone, bone_param in object_param.get('locations', []).items():
-                            bones_param['locations'][bone] = randomize_list(bone_param)
+                            normal = len(bone_param) >= 4 and bone_param[3] == 1
+                            bones_param['locations'][bone] = randomize_list(bone_param[:3], normal=normal)
 
                         # generate random rotations
                         for bone, bone_param in object_param.get('rotations', []).items():
-                            bones_param['rotations'][bone] = randomize_list(bone_param)
+                            normal = len(bone_param) >= 4 and bone_param[3] == 1
+                            bones_param['rotations'][bone] = randomize_list(bone_param[:3], normal=normal)
                         
                         # overlap/condition detection
                         condition_pass = True
@@ -230,9 +232,12 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
                             break
 
                 if not overlap:
-                    break   # we tried and found a non-overlap solution            # update overlap detectable objects
+                    break   # we tried and found a non-overlap solution            
+            
+            # update overlap detectable objects
             overlap_detectable.extend(
                 object_param.get('overlap_detectable', []))
+            
         # overlap detection result
         if overlap:
             overlap_retry_count += 1
@@ -249,15 +254,27 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
         focus_object = objects_param[random.choice(objects_list)]['focus']
 
         # randomize the camera parameters
-        camera_settings = random.choice(scene_param['camera'])
-        camera_res_param = {
-            "focus_object": focus_object,
-            "lens": random.choice(camera_param['lens']),
-            "location": randomize_list(camera_settings['location'], normal=True),
-            "rotation": randomize_list(camera_settings['rotation'], normal=True),
-            "delta_rotation": randomize_list(camera_settings['delta_rotation'], normal=True),
-        }
-
+        obj_in_camera = False
+        camera_res_param = {}
+        for _ in range(settings['camera_retry_limit']):
+            camera_settings = random.choice(scene_param['camera'])
+            camera_res_param = {
+                "focus_object": focus_object,
+                "lens": random.choice(camera_param['lens']),
+                "location": randomize_list(camera_settings['location'], normal=True),
+                "rotation": randomize_list(camera_settings['rotation'], normal=True),
+                "delta_rotation": randomize_list(camera_settings['delta_rotation'], normal=True),
+            }
+            update_camera(camera_res_param, camera) # preset the camera parameters
+            obj_in_camera = blender.is_object_in_camera(camera, focus_object)
+            if obj_in_camera:
+                break
+            else:
+                print(f"Focused object is not in frame (id {image_id}), retry...")
+        
+        if not obj_in_camera:
+            continue
+        
         render_count += 1
         result.append({'camera_settings': camera_res_param,
                        'images': []})

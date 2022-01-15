@@ -7,7 +7,8 @@
       "image_count": [10, 20],
       "overlap_object_retry_limit": 10,
       "overlap_retry_limit": 10,
-      "bone_trans_retry_limit": 100
+      "bone_trans_retry_limit": 100,
+      "camera_retry_limit": 40
     }
   },
   "camera": {
@@ -102,9 +103,10 @@
           },
           "locations": {
             "shin.L.001": [
-              [-0.3, 0.6],
+              [-0.4, 0.5],
               [-1.2, 0.4],
-              [0, 1]
+              [-1, 1.2],
+              1
             ],
             "thigh.L.001": [
               [-1, 1],
@@ -112,9 +114,10 @@
               [-1, 1]
             ],
             "shin.R.001": [
-              [-0.6, 0.3],
+              [-0.5, 0.4],
               [-1.2, 0.4],
-              [0, 1]
+              [-1, 1.2],
+              1
             ],
             "thigh.R.001": [
               [-1, 1],
