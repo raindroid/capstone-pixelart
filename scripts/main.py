@@ -5,6 +5,7 @@ from localConfig import local_config
 from pprint import pprint, pformat
 from pathlib import Path
 import random
+import shutil
 
 # =================================================================
 
@@ -26,10 +27,19 @@ params = PixelartParam(str(pixelart_path / "models/params.json"))
 script_templace_path = str(
     pixelart_path / "scripts/pixelart/blend/sample.py.template"
 )
-script_path = str(pixelart_path / "work/sample.py")
+script_directory = str(pixelart_path / "work/sample.py")
+
+# clear output output folders
+work_path = pixelart_path / "work"
+if work_path.exists() and work_path.is_dir():
+    shutil.rmtree(work_path)
+output_path = pixelart_path / params.generator['output_path']
+if output_path.exists() and output_path.is_dir():
+    shutil.rmtree(output_path)
 
 # create new working directory
-(pixelart_path / "work").mkdir(parents=True, exist_ok=True)
+work_path.mkdir(parents=True, exist_ok=True)
+output_path.mkdir(parents=True, exist_ok=True)
 
 
 for i in range(params.generator['config_count']):
@@ -57,12 +67,14 @@ for i in range(params.generator['config_count']):
         "debug": str(False),
         "pixelart_path": str(pixelart_path).replace('\\', '/'),
         "output_path": str(params.generator['output_path']).replace('\\', '/'),
+        "work_path": str(work_path).replace('\\', '/'),
+
         "settings": pformat(params.generator['settings'], width=80),
         "camera_param": pformat(params.camera, width=80),
         "objects_param": pformat(object_param, width=80),
         "scene_param": pformat(scene_param, width=80)}}
 
-    with open(script_templace_path, "r") as tempfile, open(script_path, "w") as outfile:
+    with open(script_templace_path, "r") as tempfile, open(script_directory, "w") as outfile:
         for line in tempfile:
             for replacement in configs["replacement"].items():
                 key = f"__template_{replacement[0]}"
@@ -73,7 +85,7 @@ for i in range(params.generator['config_count']):
 
     exe = PixelartExccuter(
         blender_dir,
-        script_path,
+        script_directory,
     )
     exe.run()
     exe.wait()

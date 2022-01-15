@@ -6,8 +6,7 @@ import json
 # =========================== START Blender Script ============================
 print(f"Start executing blender script from {__file__}")
 pixelart_path = Path("__template_pixelart_path")
-work_path = pixelart_path / "work"
-work_directory = str(work_path)
+work_directory = "__template_work_path"
 
 sys.path.append(os.path.dirname(__file__))
 sys.path.append(str(pixelart_path / "scripts/pixelart/blend"))
@@ -20,12 +19,6 @@ camera_param = __template_camera_param
 objects_param = __template_objects_param
 scene_param = __template_scene_param
 debug = __template_debug
-
-# clear output output folders
-if work_path.exists() and work_path.is_dir():
-    shutil.rmtree(work_path)
-if output_path.exists() and output_path.is_dir():
-    shutil.rmtree(output_path)
 
 # other settings
 settings = __template_settings
