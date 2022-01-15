@@ -9,7 +9,7 @@ from typing import Iterable, Literal, Optional, Callable, Any, Dict
 import bpy
 import blender_operation as blender
 import numpy
-
+from inspect import currentframe, getframeinfo
 
 def randomize_list(l: Iterable, normal: bool = False) -> tuple:
     if normal:
@@ -188,15 +188,15 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
                 # generate params for bones
                 for object_name, object_param in objects_param[collection_name]['bones'].items():
                     bones_param = {"rotations": {}, "locations": {}}
-                    for _ in range(settings['bone_trans_retry_limit']):
+                    for __ in range(settings['bone_trans_retry_limit']):
                         overlap = True
                         # generate random location
                         for bone, bone_param in object_param.get('locations', []).items():
-                            bones_param['locations'][bone] = randomize_list(bone_param, normal=True)
+                            bones_param['locations'][bone] = randomize_list(bone_param)
 
                         # generate random rotations
                         for bone, bone_param in object_param.get('rotations', []).items():
-                            bones_param['rotations'][bone] = randomize_list(bone_param, normal=True)
+                            bones_param['rotations'][bone] = randomize_list(bone_param)
                         
                         # overlap/condition detection
                         condition_pass = True
@@ -211,13 +211,13 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
                     # update locations
                     update_bones(collection_name, object_name, bones_param)
                     res_param[collection_name]['bones'][object_name] = bones_param
-                        
-                for object in object_param.get('overlap_detectable', []):
+
+                # overlap detection
+                for object in objects_param[collection_name].get('overlap_detectable', []):
                     if overlap:
                         break
                     try:
-                        detectable = blender.get_check_object(
-                            object, collection_name)
+                        detectable = blender.get_check_object(object, collection_name)
                     except Exception as e:
                         print(
                             f"Duplication object names detected with scene collection "
@@ -230,21 +230,20 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
                             break
 
                 if not overlap:
-                    break   # we tried and found a non-overlap solution
-            # update overlap detectable objects
+                    break   # we tried and found a non-overlap solution            # update overlap detectable objects
             overlap_detectable.extend(
                 object_param.get('overlap_detectable', []))
-
-        # overlap detection
+        # overlap detection result
         if overlap:
             overlap_retry_count += 1
             if overlap_retry_count >= settings['overlap_retry_limit']:
                 overlap_retry_count = 0
                 render_count += 1  # give up on this try
-            blender.save_as_mainfile(
-                directory=work_directory, filename=f"overlap_id_{image_id}")
+            if debug:
+                blender.save_as_mainfile(
+                    directory=work_directory, filename=f"overlap_id_{image_id}")
             continue
-        print("Found possible solutions")
+        print(f"Found possible solutions for id {image_id}")
 
         # randome select focus_object
         focus_object = objects_param[random.choice(objects_list)]['focus']
@@ -284,54 +283,3 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
                 break
 
     return result
-
-
-def pixelart_test(params: Dict, limit: int = 10, output_folder: str = 'C:\\Users\\Rain\\Documents\\PixelArt\\render'):
-
-    # get required object
-    # same as bpy.data.objects['metarig']
-    man_objs = blender.get_objects('Man', lambda obj: obj.name == 'metarig')
-    if not man_objs or len(man_objs) == 0:
-        return -1
-    man_obj = man_objs[0]
-
-    # setup output files
-    print(f"Saving {limit} images to {output_folder}")
-    image_name_format = 'image{i:04d}.jpg'
-
-    for i in range(limit):
-
-        origin_rotation = Euler((0, 0, 0), 'XYZ')
-
-        # define location range
-        location_ranges = ((-0.92, 3.41), (-2.21, -0.07), (0.01, 0.02))
-        new_location = Vector(tuple(random.uniform(*r)
-                              for r in location_ranges))
-
-        # define rotation range
-        rotation_ranges = ((-pi / 3, pi / 3), (-pi / 3, pi / 3), (-pi, pi / 2))
-        new_rotation = Euler(tuple(random.uniform(*r)
-                             for r in rotation_ranges), 'XYZ')
-        new_rotation = Euler(tuple(random.uniform(*r)
-                             for r in rotation_ranges), 'XYZ')
-
-        # define scale range
-        # assume scale XYZ in same ratio
-        scale_range = (0.85, 1.2)
-        new_scale = tuple([random.uniform(*scale_range)] * 3)
-
-        man_obj.location = new_location
-        man_obj.delta_rotation_euler = new_rotation if random.randint(
-            0, 2) == 0 else origin_rotation
-        man_obj.delta_scale = new_scale
-
-        # set output path
-        image_name = image_name_format.format(i=i)
-        bpy.context.scene.render.filepath = os.path.join(
-            output_folder, image_name)
-
-        # render the image
-
-        bpy.ops.render.render(write_still=True)
-
-    return 0

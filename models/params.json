@@ -4,7 +4,7 @@
     "config_count": 1,
     "output_path": "generated",
     "settings": {
-      "image_count": [1, 1],
+      "image_count": [10, 20],
       "overlap_object_retry_limit": 10,
       "overlap_retry_limit": 10,
       "bone_trans_retry_limit": 100
@@ -140,6 +140,7 @@
       ],
       "overlap_detectable": [
         "Cube.001",
+        "Cube.002",
         "Cube.003",
         "Cube.004",
         "Cube.005",
