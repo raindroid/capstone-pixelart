@@ -6,6 +6,7 @@ generated/
 # work directory
 work/
 *.blend1
+localConfig.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__
