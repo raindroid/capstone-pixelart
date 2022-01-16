@@ -1,10 +1,10 @@
 {
   "generator": {
-    "object_count": [1, 8],
+    "object_count": [2, 8],
     "config_count": 2,
     "output_path": "generated",
     "settings": {
-      "GPU": false,
+      "GPU": true,
       "image_count": [4, 8],
       "overlap_object_retry_limit": 10,
       "overlap_retry_limit": 10,
@@ -17,6 +17,24 @@
     "fstop": [0.7, 1.0, 1.4, 2, 2.8, 4, 5.6, 8, 16]
   },
   "objects": {
+    "__3Dsoul_eliska_006_001": {
+      "path": "people/__3Dsoul_eliska_006_001.blend",
+      "focus": "__3Dsoul_eliska_006_001",
+      "transformations": {
+        "__3Dsoul_eliska_006_001": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.8, 1.2]
+          }
+        }
+      },
+      "overlap_detectable": ["__3Dsoul_eliska_006_001"]
+    },
     "Man": {
       "path": "no_cloth_man.blend",
       "focus": "metarig",
@@ -103,23 +121,13 @@
             ]
           },
           "locations": {
-            "shin.L.001": [
-              [-0.4, 0.5],
-              [-1.2, 0.4],
-              [-1, 1.2],
-              1
-            ],
+            "shin.L.001": [[-0.4, 0.5], [-1.2, 0.4], [-1, 1.2], 1],
             "thigh.L.001": [
               [-1, 1],
               [-1, 1],
               [-1, 1]
             ],
-            "shin.R.001": [
-              [-0.5, 0.4],
-              [-1.2, 0.4],
-              [-1, 1.2],
-              1
-            ],
+            "shin.R.001": [[-0.5, 0.4], [-1.2, 0.4], [-1, 1.2], 1],
             "thigh.R.001": [
               [-1, 1],
               [-1, 1],
