@@ -1,7 +1,8 @@
 # This file contains wrapper functions of common blender functions
 
 from typing import Literal, Optional, Callable, Any, Dict
-import os, sys
+import os
+import sys
 from pathlib import Path
 
 import bpy
@@ -86,7 +87,7 @@ def save_as_mainfile(directory: str, filename: str = "output"):
 def render_image(filename: str, work_directory: str):
     # set output path
     bpy.context.scene.render.filepath = filename
-    print(f"Start rendering to filepath {filename} ...")
+    print(f"Start rendering to filepath {filename} ...", end="")
 
     # redirect output to file log temporarily
     logfile = Path(work_directory, "blender_render.log")
@@ -139,6 +140,8 @@ def detect_overlap(obj1, obj2, debug=False) -> bool:
 
 # The following functions are used to check if objects are within the camera's view range
 # code from https://blender.stackexchange.com/questions/45146/how-to-find-all-objects-in-the-cameras-view-with-python
+
+
 def camera_as_planes(scene, obj):
     """
     Return planes in world-space which represent the camera view bounds.
@@ -175,6 +178,7 @@ def camera_as_planes(scene, obj):
 def side_of_plane(p, v):
     return p[0].dot(v) + p[1]
 
+
 def is_segment_in_planes(p1, p2, planes):
     dp = p2 - p1
 
@@ -204,10 +208,11 @@ def is_segment_in_planes(p1, p2, planes):
                     if p1_fac > p2_fac:
                         return False
 
-    ## If we want the points
+    # If we want the points
     # p1_clip = p1.lerp(p2, p1_fac)
-    # p2_clip = p1.lerp(p2, p2_fac)        
+    # p2_clip = p1.lerp(p2, p2_fac)
     return True
+
 
 def point_in_object(obj, pt):
     xs = [v[0] for v in obj.bound_box]
@@ -237,9 +242,57 @@ def is_object_in_planes(obj, planes):
         return True
     return False
 
+
 def is_object_in_camera(camera, object_name):
     scene = context.scene
     origin = camera.matrix_world.to_translation()
     planes = camera_as_planes(scene, camera)
     object = get_object(object_name)
     return point_in_object(object, origin) or is_object_in_planes(object, planes)
+
+# materail operations
+
+
+def create_RGB_material(name, RGB="black"):
+    mat = bpy.data.materials.get(name)
+
+    if mat is None:
+        mat = bpy.data.materials.new(name=name)
+
+    mat.use_nodes = True
+    if mat.node_tree:
+        mat.node_tree.links.clear()
+        mat.node_tree.nodes.clear()
+
+    node_output = mat.node_tree.nodes.new(type="ShaderNodeOutputMaterial")
+    node_input = mat.node_tree.nodes.new(type="ShaderNodeRGB")
+    mat.node_tree.links.new(node_output.inputs[0], node_input.outputs[0])
+
+    if RGB == "white":
+        RGB = (1, 1, 1, 1)
+    elif RGB == "black":
+        RGB = (0, 0, 0, 1)
+
+    mat.node_tree.nodes.get('RGB').outputs[0].default_value = RGB
+
+    return mat
+
+
+def set_background_color(RGB="black"):
+
+    if RGB == "white":
+        RGB = (1, 1, 1, 1)
+    elif RGB == "black":
+        RGB = (0, 0, 0, 1)
+
+    bpy.data.worlds["World"].node_tree.nodes["Background"].inputs[0].default_value = RGB
+
+
+def clear_set_material(object, materail):
+    if object.type != "MESH":
+        return
+    object.select_set(True)
+    bpy.context.view_layer.objects.active = object
+    object.data.materials.clear()
+    object.data.materials.append(materail)
+    bpy.ops.object.select_all(action='DESELECT')

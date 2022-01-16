@@ -11,6 +11,7 @@ import blender_operation as blender
 import numpy
 from inspect import currentframe, getframeinfo
 
+
 def randomize_list(l: Iterable, normal: bool = False) -> tuple:
     if normal:
         res = []
@@ -27,7 +28,7 @@ def randomize_list(l: Iterable, normal: bool = False) -> tuple:
         return tuple(random.uniform(*r) for r in l)
 
 
-def update_camera(camera_param: Optional[Dict] = None, camera=None):
+def update_camera(camera_param: Optional[Dict] = None, camera=None, dof=True):
     if camera is None:
         blender.remove_object_type('CAMERA')
         camera = blender.create_camera()
@@ -36,10 +37,11 @@ def update_camera(camera_param: Optional[Dict] = None, camera=None):
         camera.location = (5.6, 0, 1.12)
         camera.rotation_euler = (0, pi / 2, 0)
         camera.delta_rotation_euler = (pi / 2, 0, 0)
-        camera.data.dof.use_dof = True
+        camera.data.dof.use_dof = dof
         camera.data.lens_unit = 'MILLIMETERS'
     else:
         camera.select_set(True)
+        camera.data.dof.use_dof = dof
         camera.data.lens = camera_param.get('lens', camera.data.lens)
         camera.data.dof.aperture_fstop = camera_param.get(
             'aperture_fstop', camera.data.dof.aperture_fstop)
@@ -88,7 +90,7 @@ def update_bones(collection: str, object_name: str, params: Dict[str, Any]) -> N
 
     for bone_name, rotation in params['rotations'].items():
         target.pose.bones[bone_name].rotation_euler = Euler(rotation, 'XYZ')
-        
+
     bpy.ops.object.select_all(action='DESELECT')
 
 
@@ -140,6 +142,8 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
     render_count = 0
     overlap_retry_count = 0
     while render_count < settings['image_limit']:
+        print(
+            f"INFO: Starting rendering image {render_count} (target rendering limit: {settings['image_limit']})")
         image_id = generate_image_id()
         # initial overlap detection list
         overlap_detectable = []
@@ -186,20 +190,24 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
                     res_param[collection_name]['transformations'][object_name] = trans_param
 
                 # generate params for bones
-                for object_name, object_param in objects_param[collection_name]['bones'].items():
+                for object_name, object_param in objects_param[collection_name].get('bones', {}).items():
                     bones_param = {"rotations": {}, "locations": {}}
                     for __ in range(settings['bone_trans_retry_limit']):
                         overlap = True
                         # generate random location
                         for bone, bone_param in object_param.get('locations', []).items():
-                            normal = len(bone_param) >= 4 and bone_param[3] == 1
-                            bones_param['locations'][bone] = randomize_list(bone_param[:3], normal=normal)
+                            normal = len(
+                                bone_param) >= 4 and bone_param[3] == 1
+                            bones_param['locations'][bone] = randomize_list(
+                                bone_param[:3], normal=normal)
 
                         # generate random rotations
                         for bone, bone_param in object_param.get('rotations', []).items():
-                            normal = len(bone_param) >= 4 and bone_param[3] == 1
-                            bones_param['rotations'][bone] = randomize_list(bone_param[:3], normal=normal)
-                        
+                            normal = len(
+                                bone_param) >= 4 and bone_param[3] == 1
+                            bones_param['rotations'][bone] = randomize_list(
+                                bone_param[:3], normal=normal)
+
                         # overlap/condition detection
                         condition_pass = True
                         for condition in object_param['conditions']:
@@ -219,7 +227,8 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
                     if overlap:
                         break
                     try:
-                        detectable = blender.get_check_object(object, collection_name)
+                        detectable = blender.get_check_object(
+                            object, collection_name)
                     except Exception as e:
                         print(
                             f"Duplication object names detected with scene collection "
@@ -232,18 +241,21 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
                             break
 
                 if not overlap:
-                    break   # we tried and found a non-overlap solution            
-            
+                    break   # we tried and found a non-overlap solution
+
             # update overlap detectable objects
             overlap_detectable.extend(
                 object_param.get('overlap_detectable', []))
-            
+
         # overlap detection result
         if overlap:
             overlap_retry_count += 1
             if overlap_retry_count >= settings['overlap_retry_limit']:
                 overlap_retry_count = 0
                 render_count += 1  # give up on this try
+                print(f"Overlap detected {overlap_retry_count} times (over limit), I will not retry!")
+            else:
+                print(f"Overlap detected {overlap_retry_count} times, I will retry!")
             if debug:
                 blender.save_as_mainfile(
                     directory=work_directory, filename=f"overlap_id_{image_id}")
@@ -259,28 +271,34 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
         for _ in range(settings['camera_retry_limit']):
             camera_settings = random.choice(scene_param['camera'])
             camera_res_param = {
+                "focus_collection": random.choice(objects_list),
                 "focus_object": focus_object,
                 "lens": random.choice(camera_param['lens']),
                 "location": randomize_list(camera_settings['location'], normal=True),
                 "rotation": randomize_list(camera_settings['rotation'], normal=True),
                 "delta_rotation": randomize_list(camera_settings['delta_rotation'], normal=True),
             }
-            update_camera(camera_res_param, camera) # preset the camera parameters
+            # preset the camera parameters
+            update_camera(camera_res_param, camera)
             obj_in_camera = blender.is_object_in_camera(camera, focus_object)
             if obj_in_camera:
                 break
             else:
-                print(f"Focused object is not in frame (id {image_id}), retry...")
-        
+                print(
+                    f"Focused object is not in frame (id {image_id}), retry...")
+
         if not obj_in_camera:
             continue
-        
+
         render_count += 1
         result.append({'camera_settings': camera_res_param,
+                       'collections': res_param,
+                       'id': image_id,
                        'images': []})
 
         # test with all f_stop values
-        for fstop in camera_param['fstop']:
+        for f_i, fstop in enumerate(camera_param['fstop']):
+            print(f"[{(f_i + 1) / len(camera_param['fstop']):3.0f}%]", end="\t")
             camera_res_param["aperture_fstop"] = fstop
             update_camera(camera_res_param, camera)
 
@@ -300,3 +318,43 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
                 break
 
     return result
+
+
+def render_masks(result_param: Dict, settings: Dict, render_path: str, work_directory: str,
+                 debug: bool = False):
+
+    # setup materials for masking
+    blender.set_background_color()
+    mat_back = blender.create_RGB_material("back", 'black')
+    mat_front = blender.create_RGB_material("front", 'white')
+    # get our camera
+    camera = blender.get_object("MainCamera")
+
+    for render_i, render_param in enumerate(result_param):
+        print(
+            f"INFO: Starting rendering mask {render_i} (total: {len(result_param)})")
+
+        # set everything to pure black
+        for obj in bpy.data.objects:
+            blender.clear_set_material(obj, mat_back)
+
+        for collection_name, collection_param in render_param['collections'].items():
+            # update transformations
+            for object_name, trans_param in collection_param['transformations'].items():
+                update_transform(collection_name, object_name, trans_param)
+            # update bones
+            for object_name, bones_param in collection_param.get('bones', {}).items():
+                update_bones(collection_name, object_name, bones_param)
+
+        # update focus object
+        for obj in bpy.data.collections[render_param['camera_settings']['focus_collection']].all_objects:
+            blender.clear_set_material(obj, mat_front)
+        
+        # setup camera
+        update_camera(render_param['camera_settings'], camera)
+        
+        # render mask image
+        image_id = render_param['id']
+        file_name = f'img_{image_id}'
+        image_path = os.path.join(render_path, file_name)
+        blender.render_image(image_path, work_directory)
