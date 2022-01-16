@@ -64,6 +64,7 @@ blender.save_as_mainfile(directory=work_directory)
 
 if 'error' in result:
     print(f"PixelArt script failed: {result['error']}")
+    exit(1)
 
 # =============================================================================
 # ======================= START rendering masks ===============================
@@ -75,5 +76,10 @@ blender.save_as_mainfile(directory=work_directory, filename="mask")
 # =============================================================================
 # ======================= SAVE output file ====================================
 dataset_path = output_path / "dataset.json"
+if dataset_path.exists():
+    with open(dataset_path, 'r') as old_dataset_fp:
+        old_dataset = json.load(old_dataset_fp)
+        result.extend(old_dataset)
+
 with open(dataset_path, 'w') as dataset_fp:
     json.dump(result, dataset_fp)
