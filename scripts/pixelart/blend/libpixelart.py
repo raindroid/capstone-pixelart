@@ -94,11 +94,12 @@ def update_bones(collection: str, object_name: str, params: Dict[str, Any]) -> N
     bpy.ops.object.select_all(action='DESELECT')
 
 
-def render_setup(production: bool = True) -> None:
+def render_setup(GPU: bool, production: bool = True) -> None:
     bpy.context.scene.render.engine = 'CYCLES'
     bpy.context.scene.cycles.use_denoising = True
     bpy.context.scene.cycles.preview_denoiser = 'AUTO'
     bpy.context.scene.cycles.use_preview_denoising = True
+    bpy.context.scene.cycles.device = 'GPU' if GPU else 'CPU'
     if production:
         bpy.context.scene.render.resolution_x = 1920  # image width
         bpy.context.scene.render.resolution_y = 1080  # image height
@@ -136,7 +137,7 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
     def generate_image_id(): return f'{uuid.uuid4().hex}'
 
     # setup render engine
-    render_setup(not debug)
+    render_setup(settings['GPU'], not debug)
 
     objects_list = list(objects_param.keys())
     render_count = 0
