@@ -87,7 +87,7 @@ def save_as_mainfile(directory: str, filename: str = "output"):
 def render_image(filename: str, work_directory: str):
     # set output path
     bpy.context.scene.render.filepath = filename
-    print(f"Start rendering to filepath {filename} ...", end="")
+    print(f"Start rendering to filepath {filename} ...")
 
     # redirect output to file log temporarily
     logfile = Path(work_directory, "blender_render.log")

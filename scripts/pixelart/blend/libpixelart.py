@@ -143,7 +143,7 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
     overlap_retry_count = 0
     while render_count < settings['image_limit']:
         print(
-            f"INFO: Starting rendering image {render_count} (target rendering limit: {settings['image_limit']})")
+            f"INFO: Starting rendering image {render_count + 1} (target rendering limit: {settings['image_limit']})")
         image_id = generate_image_id()
         # initial overlap detection list
         overlap_detectable = []
@@ -298,7 +298,7 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
 
         # test with all f_stop values
         for f_i, fstop in enumerate(camera_param['fstop']):
-            print(f"[{(f_i + 1) / len(camera_param['fstop']):3.0f}%]", end="\t")
+            print(f"[ {(f_i + 1) / len(camera_param['fstop']):3.0f}% ]", end="\t")
             camera_res_param["aperture_fstop"] = fstop
             update_camera(camera_res_param, camera)
 
@@ -332,7 +332,7 @@ def render_masks(result_param: Dict, settings: Dict, render_path: str, work_dire
 
     for render_i, render_param in enumerate(result_param):
         print(
-            f"INFO: Starting rendering mask {render_i} (total: {len(result_param)})")
+            f"INFO: Starting rendering mask {render_i + 1} (total: {len(result_param)})")
 
         # set everything to pure black
         for obj in bpy.data.objects:

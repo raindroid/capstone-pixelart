@@ -49,9 +49,11 @@ class PixelartExccuter(object):
 
         return self._process
 
-    def wait(self):
+    def wait(self, output_path = None):
+        out = open(output_path, 'w') if output_path else sys.stdout
+        err = open(output_path, 'w') if output_path else sys.stderr
         for line in iter(self._process.stdout.readline, b""):
-            print(line.decode("utf-8"), end="")
+            print(line.decode("utf-8"), end="", file=out)
         for line in iter(self._process.stderr.readline, b""):
-            print(line.decode("utf-8"), end="")
+            print(line.decode("utf-8"), end="", file=err)
         self._process.wait()
