@@ -9,6 +9,10 @@ work/
 localConfig.py
 .DS_Store
 
+# don't save models (large files)
+models/objects
+models/scenes
+
 # Byte-compiled / optimized / DLL files
 __pycache__
 *.py[cod]
