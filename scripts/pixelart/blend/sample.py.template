@@ -48,6 +48,7 @@ render_path = output_path / "render"
 render_path.mkdir(parents=True, exist_ok=True)
 
 render_settings = {
+    "GPU": settings['GPU'],
     "image_limit": random.randint(*settings['image_count']),
     "overlap_object_retry_limit": settings['overlap_object_retry_limit'],
     "overlap_retry_limit": settings['overlap_retry_limit'],

@@ -104,8 +104,8 @@ def render_setup(GPU: bool, production: bool = True) -> None:
         bpy.context.scene.render.resolution_x = 1920  # image width
         bpy.context.scene.render.resolution_y = 1080  # image height
         bpy.context.scene.cycles.preview_denoising_start_sample = 4
-        bpy.context.scene.cycles.samples = 128
-        bpy.context.scene.cycles.preview_samples = 32
+        bpy.context.scene.cycles.samples = 64
+        bpy.context.scene.cycles.preview_samples = 16
     else:
         bpy.context.scene.render.resolution_x = 960  # image width
         bpy.context.scene.render.resolution_y = 540  # image height
