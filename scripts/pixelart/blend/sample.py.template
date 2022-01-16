@@ -19,6 +19,7 @@ camera_param = __template_camera_param
 objects_param = __template_objects_param
 scene_param = __template_scene_param
 debug = __template_debug
+config_i = __template_config_i
 
 # other settings
 settings = __template_settings
@@ -60,7 +61,7 @@ result = pixelart.render_images(
     scene_param, objects_param, settings=render_settings,
     render_path=str(render_path), work_directory=work_directory, debug=debug)
 
-blender.save_as_mainfile(directory=work_directory)
+blender.save_as_mainfile(directory=work_directory, filename=f"output_{config_i}")
 
 if 'error' in result:
     print(f"PixelArt script failed: {result['error']}")
@@ -71,7 +72,7 @@ if 'error' in result:
 mask_render_path = output_path / "masks"
 mask_render_path.mkdir(parents=True, exist_ok=True)
 pixelart.render_masks(result, render_settings, render_path=str(mask_render_path), work_directory=work_directory)
-blender.save_as_mainfile(directory=work_directory, filename="mask")
+blender.save_as_mainfile(directory=work_directory, filename=f"mask_{config_i}")
 
 # =============================================================================
 # ======================= SAVE output file ====================================

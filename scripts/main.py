@@ -68,6 +68,7 @@ for i in progressbar.progressbar(range(params.generator['config_count']), redire
 
     # generate new configuration
     configs = {"replacement": {
+        "config_i": str(i),
         "debug": str(debug_mode),
         "pixelart_path": str(pixelart_path).replace('\\', '/'),
         "output_path": str(params.generator['output_path']).replace('\\', '/'),
