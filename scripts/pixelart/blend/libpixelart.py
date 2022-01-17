@@ -371,7 +371,7 @@ def render_masks(result_param: Dict, settings: Dict, render_path: str, work_dire
 
             render_param['masks'].append({
                 'collection': collection_name,
-                'mask_name': image_path,
+                'mask_name': file_name,
             })
     
     return result_param
