@@ -150,9 +150,8 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
         overlap_detectable = []
         overlap = False
 
-        for object in scene_param.get('overlap_detectable', []):
-            overlap_detectable.append(blender.get_check_object(
-                object, scene_param['collection']))
+        overlap_detectable.extend(map(lambda obj: blender.get_check_object(obj, scene_param['collection']),
+                                           scene_param.get('overlap_detectable', [])))
 
         # randomize each object
         res_param = {}
@@ -228,8 +227,11 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
                     if overlap:
                         break
                     try:
+                        print(
+                            f"Getting overlap detection for {object} in {collection_name}")
                         detectable = blender.get_check_object(
                             object, collection_name)
+                        print(detectable)
                     except Exception as e:
                         print(
                             f"Duplication object names detected with scene collection "
@@ -245,8 +247,8 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
                     break   # we tried and found a non-overlap solution
 
             # update overlap detectable objects
-            overlap_detectable.extend(
-                object_param.get('overlap_detectable', []))
+            overlap_detectable.extend(map(lambda obj: blender.get_check_object(obj, collection_name),
+                                               objects_param[collection_name].get('overlap_detectable', [])))
 
         # overlap detection result
         if overlap:
@@ -254,9 +256,11 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
             if overlap_retry_count >= settings['overlap_retry_limit']:
                 overlap_retry_count = 0
                 render_count += 1  # give up on this try
-                print(f"Overlap detected {overlap_retry_count} times (over limit), I will not retry!")
+                print(
+                    f"Overlap detected {overlap_retry_count} times (over limit), I will not retry!")
             else:
-                print(f"Overlap detected {overlap_retry_count} times, I will retry!")
+                print(
+                    f"Overlap detected {overlap_retry_count} times, I will retry!")
             if debug:
                 blender.save_as_mainfile(
                     directory=work_directory, filename=f"overlap_id_{image_id}")
@@ -350,10 +354,10 @@ def render_masks(result_param: Dict, settings: Dict, render_path: str, work_dire
         # update focus object
         for obj in bpy.data.collections[render_param['camera_settings']['focus_collection']].all_objects:
             blender.clear_set_material(obj, mat_front)
-        
+
         # setup camera
         update_camera(render_param['camera_settings'], camera)
-        
+
         # render mask image
         image_id = render_param['id']
         file_name = f'img_{image_id}'

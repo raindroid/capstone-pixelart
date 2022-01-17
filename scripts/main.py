@@ -22,7 +22,7 @@ pixelart_path = Path(local_config['pixelart_path'])
 
 # =================================================================
 # ================= START PixelArt ================================
-debug_mode = False
+debug_mode = True
 print(f"PROGRESS: Started executing pixel art, debug_mode: {debug_mode}")
 
 # load configuration file
@@ -30,7 +30,6 @@ params = PixelartParam(str(pixelart_path / "models/params.json"))
 script_templace_path = str(
     pixelart_path / "scripts/pixelart/blend/sample.py.template"
 )
-script_directory = str(pixelart_path / "work/sample.py")
 
 # clear output output folders
 work_path = pixelart_path / "work"
@@ -79,6 +78,7 @@ for i in progressbar.progressbar(range(params.generator['config_count']), redire
         "objects_param": pformat(object_param, width=80),
         "scene_param": pformat(scene_param, width=80)}}
 
+    script_directory = str(pixelart_path / f"work/sample_config_{i}.py")
     with open(script_templace_path, "r") as tempfile, open(script_directory, "w") as outfile:
         for line in tempfile:
             for replacement in configs["replacement"].items():
