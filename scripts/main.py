@@ -123,7 +123,7 @@ for i in progressbar.progressbar(range(len(dataset)), redirect_stdout=True):
             print(
                 f"WARNING: Emitted image img_{param['id']}, object is way too small!")
     if keep_param:
-        dataset[i]['mask'] = new_param
+        dataset[i]['masks'] = new_param
         updated_dataset.append(dataset[i])
 
 print(f"INFO: Final result: we have generated {len(updated_dataset)} images")
