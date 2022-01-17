@@ -335,13 +335,11 @@ def render_masks(result_param: Dict, settings: Dict, render_path: str, work_dire
     # get our camera
     camera = blender.get_object("MainCamera")
 
+
     for render_i, render_param in enumerate(result_param):
+        render_param['masks'] = []
         print(
             f"INFO: Starting rendering mask {render_i + 1} (total: {len(result_param)})")
-
-        # set everything to pure black
-        for obj in bpy.data.objects:
-            blender.clear_set_material(obj, mat_back)
 
         for collection_name, collection_param in render_param['collections'].items():
             # update transformations
@@ -352,14 +350,28 @@ def render_masks(result_param: Dict, settings: Dict, render_path: str, work_dire
                 update_bones(collection_name, object_name, bones_param)
 
         # update focus object
-        for obj in bpy.data.collections[render_param['camera_settings']['focus_collection']].all_objects:
-            blender.clear_set_material(obj, mat_front)
+        for collection_index, collection_name in enumerate(render_param['collections'].keys()):
 
-        # setup camera
-        update_camera(render_param['camera_settings'], camera)
+            # set everything to pure black
+            for obj in bpy.data.objects:
+                blender.clear_set_material(obj, mat_back)
 
-        # render mask image
-        image_id = render_param['id']
-        file_name = f'img_{image_id}'
-        image_path = os.path.join(render_path, file_name)
-        blender.render_image(image_path, work_directory)
+            # set object to pure white
+            for obj in bpy.data.collections[collection_name].all_objects:
+                blender.clear_set_material(obj, mat_front)
+
+            # setup camera
+            update_camera(render_param['camera_settings'], camera)
+
+            # render mask image
+            image_id = render_param['id']
+            file_name = f'mask_{image_id}_{collection_index}'
+            image_path = os.path.join(render_path, file_name)
+            blender.render_image(image_path, work_directory)
+
+            render_param['masks'].append({
+                'collection': collection_name,
+                'mask_name': image_path,
+            })
+    
+    return result_param

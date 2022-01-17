@@ -22,7 +22,7 @@ pixelart_path = Path(local_config['pixelart_path'])
 
 # =================================================================
 # ================= START PixelArt ================================
-debug_mode = True
+debug_mode = False
 print(f"PROGRESS: Started executing pixel art, debug_mode: {debug_mode}")
 
 # load configuration file
@@ -110,12 +110,21 @@ with open(params_json, 'r') as param:
 updated_dataset = []
 for i in progressbar.progressbar(range(len(dataset)), redirect_stdout=True):
     param = dataset[i]
-    small = generate_mask_bbox_and_check_small(param, output_path)
-    if not small:
-        updated_dataset.append(param)
-    else:
-        print(
-            f"WARNING: Emitted image img_{param['id']}, object is way too small!")
+    new_param = []
+    keep_param = True # check if the target is too small 
+    for mask_param in param['masks']:
+        bbox, dimension, small = generate_mask_bbox_and_check_small(mask_param['mask_name'], output_path)
+        param.setdefault('dimension', dimension)
+        mask_param['bbox'] = bbox
+        if not small:
+            new_param.append(mask_param)
+        elif param['collection'] == param['camera_settings']['focus_collection']:
+            keep_param = False
+            print(
+                f"WARNING: Emitted image img_{param['id']}, object is way too small!")
+    if keep_param:
+        dataset[i]['mask'] = new_param
+        updated_dataset.append(dataset[i])
 
 print(f"INFO: Final result: we have generated {len(updated_dataset)} images")
 

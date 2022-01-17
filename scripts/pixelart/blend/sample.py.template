@@ -71,7 +71,7 @@ if 'error' in result:
 # ======================= START rendering masks ===============================
 mask_render_path = output_path / "masks"
 mask_render_path.mkdir(parents=True, exist_ok=True)
-pixelart.render_masks(result, render_settings, render_path=str(mask_render_path), work_directory=work_directory)
+result = pixelart.render_masks(result, render_settings, render_path=str(mask_render_path), work_directory=work_directory)
 blender.save_as_mainfile(directory=work_directory, filename=f"mask_{config_i}")
 
 # =============================================================================

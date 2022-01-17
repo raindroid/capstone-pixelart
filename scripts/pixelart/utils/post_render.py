@@ -36,32 +36,30 @@ def binary_mask(img: np.ndarray):
     mask = np.dot(img_float[..., :3], [1/3, 1/3, 1/3]).astype('uint8')
     return mask
 
-def generate_mask_bbox_and_check_small(param: Dict, dataset_dir: str, threshold: float=0.025) -> bool:
+def generate_mask_bbox_and_check_small(mask_file_name: Dict, dataset_dir: str, threshold: float=0.025) -> bool:
     """generating a cleaner mask with binary color and a bounding box
 
     Args:
-        param (Dict): all the necessary params
+        mask_file_name (Dict): mask file name
         dataset_dir (str): directory of dataset (generated folder)
 
     Returns:
+        box: bounding box
+        dimention: width and height of the image
         bool: whether the object is too small in the frame
     """
     dataset_path = Path(dataset_dir)
-    img = cv2.imread(str(dataset_path / "masks" / f"img_{param['id']}.png"))
+    img = cv2.imread(str(dataset_path / "masks" / f"{mask_file_name}.png"))
 
     mask = binary_mask(img)
     box = bbox(mask)
 
     # save mask to npy file (faster to read/write)
-    mask_file_name = str(f"mask_{param['id']}.npy")
+    mask_file_name = f"{mask_file_name}.npy"
     np.save(str(dataset_path / "masks" / mask_file_name), mask)
 
-    # update dataset configs
-    param['bbox'] = box
-    param['mask'] = mask_file_name
-    param['dimension'] = list(img.shape)
-    
-    return ((box[2] - box[0]) * (box[3] - box[1])) / \
+    # update dataset configs    
+    return box, list(img.shape), ((box[2] - box[0]) * (box[3] - box[1])) / \
         (mask.shape[0] * mask.shape[1]) < threshold
 
 

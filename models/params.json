@@ -1,7 +1,7 @@
 {
   "generator": {
     "object_count": [2, 8],
-    "config_count": 8,
+    "config_count": 4,
     "output_path": "generated",
     "settings": {
       "GPU": true,
