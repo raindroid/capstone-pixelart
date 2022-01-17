@@ -118,7 +118,7 @@ for i in progressbar.progressbar(range(len(dataset)), redirect_stdout=True):
         mask_param['bbox'] = bbox
         if not small:
             new_param.append(mask_param)
-        elif param['collection'] == param['camera_settings']['focus_collection']:
+        elif mask_param['collection'] == param['camera_settings']['focus_collection']:
             keep_param = False
             print(
                 f"WARNING: Emitted image img_{param['id']}, object is way too small!")
