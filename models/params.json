@@ -252,7 +252,7 @@
       ],
       "overlap_detectable": [
         "bedroom2Plane.001",
-        "bedroom2Window_Group",
+        "bedroom2WindowFrame",
         "bedroom2Cube.001",
         "bedroom2Cube.002",
         "bedroom2Cube.003",
@@ -299,10 +299,10 @@
         "hallwayCube.004",
         "hallwayCube.005",
         "hallwayPlane",
-        "hallwayCube.009",
-        "hallwayCube.010",
-        "hallwayCube.011",
-        "hallwayCube.012"
+        "hallwayPlane.009",
+        "hallwayPlane.010",
+        "hallwayPlane.011",
+        "hallwayPlane.012"
       ],
       "camera": [
         {
