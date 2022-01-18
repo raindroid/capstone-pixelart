@@ -205,7 +205,7 @@
         }
       ]
     },
-    "Bedroom1": {
+    "bedroom1": {
       "path": "bedroom1.blend",
       "region": [
         [-3, 3],
@@ -220,7 +220,8 @@
         "bedroom1Plane.011",
         "bedroom1Plane.008",
         "bedroom1Plane.046",
-        "bedroom1Plane.047"
+        "bedroom1Plane.047",
+        "bedroom1Plane.040"
       ],
       "camera": [
         {
@@ -233,6 +234,46 @@
             [1.57, 0.018],
             [0, 0.17],
             [0, 0]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "hallway": {
+      "path": "hallway.blend",
+      "region": [
+        [-0.55, 3.5],
+        [-6, 8],
+        [0, 0.5]
+      ],
+      "overlap_detectable": [
+        "hallwayCube",
+        "hallwayCube.001",
+        "hallwayCube.002",
+        "hallwayCube.003",
+        "hallwayCube.004",
+        "hallwayCube.005",
+        "hallwayPlane",
+        "hallwayCube.009",
+        "hallwayCube.010",
+        "hallwayCube.011",
+        "hallwayCube.012"
+      ],
+      "camera": [
+        {
+          "location": [
+            [13, 16],
+            [-15, -17],
+            [20, 22]
+          ],
+          "rotation": [
+            [0.96, 0.99],
+            [0, 0],
+            [-18, -18.05]
           ],
           "delta_rotation": [
             [0, 0],
