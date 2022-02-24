@@ -433,6 +433,7 @@
   "scenes": {
     "Bedroom": {
       "path": "bedroom.blend",
+      "scale": 0.99,
       "region": [
         [-2.2, 2.2],
         [-2, 0.3],

@@ -3,6 +3,8 @@ render/
 generated/
 .vscode
 
+*_datasets
+
 # work directory
 work/
 *.blend1
