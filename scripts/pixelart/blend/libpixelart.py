@@ -182,7 +182,7 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
                     if 'scale' in scene_param:  # the scene model is not real world model
                         trans_param['scale'] = tuple(
                             np.array(trans_param['scale']) * np.array(scene_param['scale']))
-                        print(f"FOund different scene scale {scene_param['scale']}, resulting {trans_param['scale']}")
+                        print(f"Found different scene scale {scene_param['scale']}, resulting {trans_param['scale']}")
 
                     # generate random location
                     center = object_param.get('center_offset', [0, 0, 0])
@@ -237,7 +237,6 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
                             f"Getting overlap detection for {object} in {collection_name}")
                         detectable = blender.get_check_object(
                             object, collection_name)
-                        print(detectable)
                     except Exception as e:
                         print(
                             f"Duplication object names detected with scene collection "
