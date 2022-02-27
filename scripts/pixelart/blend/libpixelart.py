@@ -8,7 +8,7 @@ from mathutils import Vector, Euler
 from typing import Iterable, Literal, Optional, Callable, Any, Dict
 import bpy
 import blender_operation as blender
-import numpy
+import numpy as np
 from inspect import currentframe, getframeinfo
 
 
@@ -21,7 +21,7 @@ def randomize_list(l: Iterable, normal: bool = False) -> tuple:
             center = (r[0] + r[1]) / 2
             scale = abs(r[1] - r[0]) / 2
             while v is None or v < r[0] or v > r[1]:
-                v = numpy.random.normal(center, scale)
+                v = np.random.normal(center, scale)
             res.append(v)
         return tuple(res)
     else:
@@ -168,7 +168,9 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
                 overlap = False
 
                 for object_name, object_param in objects_param[collection_name]['transformations'].items():
-                    trans_param = {}
+                    trans_param = {
+                        'scale': (1, 1, 1)
+                    }
 
                     # generate random transformations
                     if 'rotation' in object_param['delta_transformation']:
@@ -177,6 +179,10 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
                     if 'scale' in object_param['delta_transformation']:
                         trans_param['scale'] = tuple(
                             [random.uniform(*object_param['delta_transformation']['scale'])] * 3)
+                    if 'scale' in scene_param:  # the scene model is not real world model
+                        trans_param['scale'] = tuple(
+                            np.array(trans_param['scale']) * np.array(scene_param['scale']))
+                        print(f"Found different scene scale {scene_param['scale']}, resulting {trans_param['scale']}")
 
                     # generate random location
                     center = object_param.get('center_offset', [0, 0, 0])
@@ -231,7 +237,6 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
                             f"Getting overlap detection for {object} in {collection_name}")
                         detectable = blender.get_check_object(
                             object, collection_name)
-                        print(detectable)
                     except Exception as e:
                         print(
                             f"Duplication object names detected with scene collection "

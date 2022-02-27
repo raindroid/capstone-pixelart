@@ -29,11 +29,299 @@
               [0, 0],
               [-3.14159, 3.14159]
             ],
-            "scale": [0.8, 1.2]
+            "scale": [0.9, 1.1]
           }
         }
       },
       "overlap_detectable": ["__3Dsoul_eliska_006_001"]
+    },
+    "__3Dsoul_katka_001_001": {
+      "path": "people/__3Dsoul_katka_001_001.blend",
+      "focus": "__3Dsoul_katka_001_001",
+      "transformations": {
+        "__3Dsoul_katka_001_001": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.1]
+          }
+        }
+      },
+      "overlap_detectable": ["__3Dsoul_katka_001_001"]
+    },
+    "__3Dsoul_peta_009_001": {
+      "path": "people/__3Dsoul_peta_009_001.blend",
+      "focus": "__3Dsoul_peta_009_001",
+      "transformations": {
+        "__3Dsoul_peta_009_001": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.1]
+          }
+        }
+      },
+      "overlap_detectable": ["__3Dsoul_peta_009_001"]
+    },
+    "__3Dsoul_peta_013": {
+      "path": "people/__3Dsoul_peta_013.blend",
+      "focus": "__3Dsoul_peta_013",
+      "transformations": {
+        "__3Dsoul_peta_013": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.1]
+          }
+        }
+      },
+      "overlap_detectable": ["__3Dsoul_peta_013"]
+    },
+    "__3Dsoul_vrata_001_001": {
+      "path": "people/__3Dsoul_vrata_001_001.blend",
+      "focus": "__3Dsoul_vrata_001_001",
+      "transformations": {
+        "__3Dsoul_vrata_001_001": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.1]
+          }
+        }
+      },
+      "overlap_detectable": ["__3Dsoul_vrata_001_001"]
+    },
+    "3dsoul_kuba": {
+      "path": "people/3dsoul_kuba.blend",
+      "focus": "3dsoul_kuba",
+      "transformations": {
+        "3dsoul_kuba": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.1]
+          }
+        }
+      },
+      "overlap_detectable": ["3dsoul_kuba"]
+    },
+    "3Dsoul_kuba_006": {
+      "path": "people/3Dsoul_kuba_006.blend",
+      "focus": "3Dsoul_kuba_006",
+      "transformations": {
+        "3Dsoul_kuba_006": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.1]
+          }
+        }
+      },
+      "overlap_detectable": ["3Dsoul_kuba_006"]
+    },
+    "3Dsoul_mirja_mesh": {
+      "path": "people/3Dsoul_mirja_mesh.blend",
+      "focus": "3Dsoul_mirja_mesh",
+      "transformations": {
+        "3Dsoul_mirja_mesh": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.1]
+          }
+        }
+      },
+      "overlap_detectable": ["3Dsoul_mirja_mesh"]
+    },
+    "3Dsoul_niklas": {
+      "path": "people/3Dsoul_niklas.blend",
+      "focus": "3Dsoul_niklas",
+      "transformations": {
+        "3Dsoul_niklas": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.1]
+          }
+        }
+      },
+      "overlap_detectable": ["3Dsoul_niklas"]
+    },
+    "3Dsoul_pekka": {
+      "path": "people/3Dsoul_pekka.blend",
+      "focus": "3Dsoul_pekka",
+      "transformations": {
+        "3Dsoul_pekka": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.1]
+          }
+        }
+      },
+      "overlap_detectable": ["3Dsoul_pekka"]
+    },
+    "3Dsoul_rachel": {
+      "path": "people/3Dsoul_rachel.blend",
+      "focus": "3Dsoul_rachel",
+      "transformations": {
+        "3Dsoul_rachel": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.1]
+          }
+        }
+      },
+      "overlap_detectable": ["3Dsoul_rachel"]
+    },
+    "3dsoul_sasa": {
+      "path": "people/3dsoul_sasa.blend",
+      "focus": "3dsoul_sasa",
+      "transformations": {
+        "3dsoul_sasa": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.1]
+          }
+        }
+      },
+      "overlap_detectable": ["3dsoul_sasa"]
+    },
+    "3Dsoul_tom": {
+      "path": "people/3Dsoul_tom.blend",
+      "focus": "3Dsoul_tom",
+      "transformations": {
+        "3Dsoul_tom": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.1]
+          }
+        }
+      },
+      "overlap_detectable": ["3Dsoul_tom"]
+    },
+    "Man_Formal_Pose1": {
+      "path": "people/Man_Formal_Pose1.blend",
+      "focus": "Man_Formal_Pose1",
+      "transformations": {
+        "Man_Formal_Pose1": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.1]
+          }
+        }
+      },
+      "overlap_detectable": ["Man_Formal_Pose1"]
+    },
+    "Realistic_Guy_Standing": {
+      "path": "people/Realistic_Guy_Standing.blend",
+      "focus": "Realistic_Guy_Standing",
+      "transformations": {
+        "Realistic_Guy_Standing": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.1]
+          }
+        }
+      },
+      "overlap_detectable": ["Realistic_Guy_Standing"]
+    },
+    "Woman_Casual_Stand_Pose1": {
+      "path": "people/Woman_Casual_Stand_Pose1.blend",
+      "focus": "Woman_Casual_Stand_Pose1",
+      "transformations": {
+        "Woman_Casual_Stand_Pose1": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.1]
+          }
+        }
+      },
+      "overlap_detectable": ["Woman_Casual_Stand_Pose1"]
+    },
+    "Woman_Formal_Stand_Pose2": {
+      "path": "people/Woman_Formal_Stand_Pose2.blend",
+      "focus": "Woman_Formal_Stand_Pose2",
+      "transformations": {
+        "Woman_Formal_Stand_Pose2": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.1]
+          }
+        }
+      },
+      "overlap_detectable": ["Woman_Formal_Stand_Pose2"]
     },
     "Man": {
       "path": "no_cloth_man.blend",
@@ -145,6 +433,7 @@
   "scenes": {
     "Bedroom": {
       "path": "bedroom.blend",
+      "scale": 0.99,
       "region": [
         [-2.2, 2.2],
         [-2, 0.3],
