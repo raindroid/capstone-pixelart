@@ -243,47 +243,6 @@
         }
       ]
     },
-    "bedroom2": {
-      "path": "bedroom2.blend",
-      "region": [
-        [1.524, 3.048],
-        [-6.096, -4.572],
-        [1.8288, 2.7432]
-      ],
-      "overlap_detectable": [
-        "bedroom2Plane.001",
-        "bedroom2WindowFrame",
-        "bedroom2Cube.001",
-        "bedroom2Cube.002",
-        "bedroom2Cube.003",
-        "bedroom2Cube.004",
-        "bedroom2Cube.005",
-        "bedroom2Cube.006",
-        "bedroom2Cube.007",
-        "bedroom2Cube.008",
-        "bedroom2Cube.010",
-        "bedroom2Cube"
-      ],
-      "camera": [
-        {
-          "location": [
-            [3.6, 4],
-            [-8, -6],
-            [2.4, 2.9]
-          ],
-          "rotation": [
-            [1.3890, 1.4],
-            [-0.35, 0.35],
-            [0.427, 0.5]
-          ],
-          "delta_rotation": [
-            [0, 0],
-            [0, 0],
-            [0, 0]
-          ]
-        }
-      ]
-    },
     "hallway": {
       "path": "hallway.blend",
       "region": [
