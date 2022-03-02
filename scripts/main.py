@@ -22,7 +22,7 @@ pixelart_path = Path(local_config['pixelart_path'])
 
 # =================================================================
 # ================= START PixelArt ================================
-debug_mode = False
+debug_mode = True
 print(f"PROGRESS: Started executing pixel art, debug_mode: {debug_mode}")
 
 # load configuration file
