@@ -3,9 +3,8 @@
     "object_count": [2, 8],
     "config_count": 4,
     "output_path": "generated",
+    "image_count": [4, 8],
     "settings": {
-      "GPU": true,
-      "image_count": [4, 8],
       "overlap_object_retry_limit": 10,
       "overlap_retry_limit": 10,
       "bone_trans_retry_limit": 100,
