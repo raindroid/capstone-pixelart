@@ -427,7 +427,116 @@
         }
       },
       "overlap_detectable": ["body"]
+    },
+    "joy": {
+      "path": "people/taobao/joy.blend",
+      "focus": "joy",
+      "transformations": {
+        "joy": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.1]
+          }
+        }
+      },
+      "overlap_detectable": ["joy"]
+    },
+    "Airen_v1.0_2.79": {
+      "path": "people/taobao/Airen_v1.0_2.79.blend",
+      "focus": "Airen_v1.0_2.79",
+      "transformations": {
+        "Airen_v1.0_2.79": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.8, 1.1]
+          }
+        }
+      },
+      "overlap_detectable": ["Airen_v1.0_2.79"]
+    },
+    "Arin": {
+      "path": "people/taobao/Arin.blend",
+      "focus": "Arin",
+      "transformations": {
+        "Arin": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.4]
+          }
+        }
+      },
+      "overlap_detectable": ["Arin"]
+    },
+    "Claire": {
+      "path": "people/taobao/Claire.blend",
+      "focus": "Claire",
+      "transformations": {
+        "Claire": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.95, 1.05]
+          }
+        }
+      },
+      "overlap_detectable": ["Claire"]
+    },
+    "Davi": {
+      "path": "people/taobao/Davi.blend",
+      "focus": "Davi",
+      "transformations": {
+        "Davi": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.85, 1.15]
+          }
+        }
+      },
+      "overlap_detectable": ["Davi"]
+    },
+    "Kiki": {
+      "path": "people/taobao/Kiki.blend",
+      "focus": "Kiki",
+      "transformations": {
+        "Kiki": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.85, 1.15]
+          }
+        }
+      },
+      "overlap_detectable": ["Kiki"]
     }
+
   },
   "scenes": {
     "Bedroom": {
