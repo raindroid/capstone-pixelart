@@ -429,7 +429,7 @@
       "overlap_detectable": ["body"]
     },
     "Airen_arma": {
-      "path": "people/taobao/Airen.blend",
+      "path": "people/taobao/Airen/Airen.blend",
       "focus": "Airen_arma",
       "transformations": {
         "Airen_arma": {
@@ -472,10 +472,10 @@
           ]
         }
       },
-      "overlap_detectable": []
+      "overlap_detectable": ["Airen"]
     },
     "Arin_arma": {
-      "path": "people/taobao/Arin.blend",
+      "path": "people/taobao/Arin/Arin.blend",
       "focus": "Arin_arma",
       "transformations": {
         "Arin_arma": {
@@ -518,10 +518,10 @@
           ]
         }
       },
-      "overlap_detectable": []
+      "overlap_detectable": ["Arin"]
     },
     "Claire_arma": {
-      "path": "people/taobao/Claire.blend",
+      "path": "people/taobao/Claire/Claire.blend",
       "focus": "Claire_arma",
       "transformations": {
         "Claire_arma": {
@@ -564,10 +564,10 @@
           ]
         }
       },
-      "overlap_detectable": []
+      "overlap_detectable": ["Claire"]
     },
     "Davi_arma": {
-      "path": "people/taobao/Davi.blend",
+      "path": "people/taobao/Davi/Davi.blend",
       "focus": "Davi_arma",
       "transformations": {
         "Davi_arma": {
@@ -610,10 +610,10 @@
           ]
         }
       },
-      "overlap_detectable": []
+      "overlap_detectable": ["Davi"]
     },
     "Kiki_arma": {
-      "path": "people/taobao/Kiki.blend",
+      "path": "people/taobao/Kiki/Kiki.blend",
       "focus": "Kiki_arma",
       "transformations": {
         "Kiki_arma": {
@@ -656,10 +656,10 @@
           ]
         }
       },
-      "overlap_detectable": []
+      "overlap_detectable": ["Kiki"]
     },
     "Lethe_arma": {
-      "path": "people/taobao/Lethe.blend",
+      "path": "people/taobao/Lethe/Lethe.blend",
       "focus": "Lethe_arma",
       "transformations": {
         "Lethe_arma": {
@@ -702,7 +702,7 @@
           ]
         }
       },
-      "overlap_detectable": []
+      "overlap_detectable": ["Lethe"]
     }
   },
   "scenes": {
