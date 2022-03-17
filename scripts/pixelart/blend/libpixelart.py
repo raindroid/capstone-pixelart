@@ -100,6 +100,19 @@ def render_setup(GPU: bool, production: bool = True) -> None:
     bpy.context.scene.cycles.preview_denoiser = 'AUTO'
     bpy.context.scene.cycles.use_preview_denoising = True
     bpy.context.scene.cycles.device = 'GPU' if GPU else 'CPU'
+    if GPU:
+        cycles_preferences = bpy.context.preferences.addons['cycles'].preferences
+        cycles_preferences.refresh_devices()
+        devices = cycles_preferences.devices
+        for device in devices:
+            print('Found device', device.type, device.name)
+            if device.type == "CPU":
+                device.use = True
+            else:
+                device.use = True
+                print('activated gpu', device.name)
+
+        cycles_preferences.compute_device_type = "CUDA"
     if production:
         bpy.context.scene.render.resolution_x = 1920  # image width
         bpy.context.scene.render.resolution_y = 1080  # image height

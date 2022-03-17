@@ -20,7 +20,7 @@ class PixelartExccuter(object):
             blend:          path to blend file (optional)
             background:     bool to run background or with UI (default: True)
         """
-        self._blender = "blender"
+        self._blender = "./blender"
         if sys.platform == "win32":
             self._blender = "blender.exe"
         elif sys.platform == "darwin":
