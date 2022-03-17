@@ -3,6 +3,8 @@ render/
 generated/
 .vscode
 
+*.zip
+
 *_datasets
 
 # work directory

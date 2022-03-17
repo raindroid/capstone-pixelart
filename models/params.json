@@ -1,6 +1,6 @@
 {
   "generator": {
-    "object_count": [2, 8],
+    "object_count": [2, 4],
     "config_count": 4,
     "output_path": "generated",
     "image_count": [4, 8],
@@ -13,7 +13,7 @@
   },
   "camera": {
     "lens": [35, 55, 70, 85],
-    "fstop": [0.7, 1.0, 1.4, 2, 2.8, 4, 5.6, 8, 16]
+    "fstop": [1.0, 16]
   },
   "objects": {
     "__3Dsoul_eliska_006_001": {
