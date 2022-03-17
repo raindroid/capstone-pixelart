@@ -428,29 +428,11 @@
       },
       "overlap_detectable": ["body"]
     },
-    "joy": {
-      "path": "people/taobao/joy.blend",
-      "focus": "joy",
+    "Airen_arma": {
+      "path": "people/taobao/Airen.blend",
+      "focus": "Airen_arma",
       "transformations": {
-        "joy": {
-          "center_offset": [0, 0, 0],
-          "delta_transformation": {
-            "rotation": [
-              [0, 0],
-              [0, 0],
-              [-3.14159, 3.14159]
-            ],
-            "scale": [0.9, 1.1]
-          }
-        }
-      },
-      "overlap_detectable": ["joy"]
-    },
-    "Airen_v1.0_2.79": {
-      "path": "people/taobao/Airen_v1.0_2.79.blend",
-      "focus": "Airen_v1.0_2.79",
-      "transformations": {
-        "Airen_v1.0_2.79": {
+        "Airen_arma": {
           "center_offset": [0, 0, 0],
           "delta_transformation": {
             "rotation": [
@@ -462,13 +444,41 @@
           }
         }
       },
-      "overlap_detectable": ["Airen_v1.0_2.79"]
+      "bones": {
+        "Airen_arma": {
+          "rotations": {
+            "Bip001-Spine": [
+              [-0.3, 0.8],
+              [-0.2, 0.2],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-R-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ]
+          },
+          "locations": {
+            
+          },
+          "conditions": [
+            "abs(bones_param['rotations']['Bip001-L-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4",
+            "abs(bones_param['rotations']['Bip001-R-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4"
+          ]
+        }
+      },
+      "overlap_detectable": []
     },
-    "Arin": {
+    "Arin_arma": {
       "path": "people/taobao/Arin.blend",
-      "focus": "Arin",
+      "focus": "Arin_arma",
       "transformations": {
-        "Arin": {
+        "Arin_arma": {
           "center_offset": [0, 0, 0],
           "delta_transformation": {
             "rotation": [
@@ -480,13 +490,41 @@
           }
         }
       },
-      "overlap_detectable": ["Arin"]
+      "bones": {
+        "Arin_arma": {
+          "rotations": {
+            "Bip001-Spine": [
+              [-0.3, 0.8],
+              [-0.2, 0.2],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-R-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ]
+          },
+          "locations": {
+
+          },
+          "conditions": [
+            "abs(bones_param['rotations']['Bip001-L-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4",
+            "abs(bones_param['rotations']['Bip001-R-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4"
+          ]
+        }
+      },
+      "overlap_detectable": []
     },
-    "Claire": {
+    "Claire_arma": {
       "path": "people/taobao/Claire.blend",
-      "focus": "Claire",
+      "focus": "Claire_arma",
       "transformations": {
-        "Claire": {
+        "Claire_arma": {
           "center_offset": [0, 0, 0],
           "delta_transformation": {
             "rotation": [
@@ -498,13 +536,41 @@
           }
         }
       },
-      "overlap_detectable": ["Claire"]
+      "bones": {
+        "Claire_arma": {
+          "rotations": {
+            "Bip001-Spine": [
+              [-0.3, 0.8],
+              [-0.2, 0.2],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-R-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ]
+          },
+          "locations": {
+            
+          },
+          "conditions": [
+            "abs(bones_param['rotations']['Bip001-L-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4",
+            "abs(bones_param['rotations']['Bip001-R-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4"
+          ]
+        }
+      },
+      "overlap_detectable": []
     },
-    "Davi": {
+    "Davi_arma": {
       "path": "people/taobao/Davi.blend",
-      "focus": "Davi",
+      "focus": "Davi_arma",
       "transformations": {
-        "Davi": {
+        "Davi_arma": {
           "center_offset": [0, 0, 0],
           "delta_transformation": {
             "rotation": [
@@ -516,13 +582,41 @@
           }
         }
       },
-      "overlap_detectable": ["Davi"]
+      "bones": {
+        "Davi_arma": {
+          "rotations": {
+            "Bip001-Spine": [
+              [-0.3, 0.8],
+              [-0.2, 0.2],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-R-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ]
+          },
+          "locations": {
+            
+          },
+          "conditions": [
+            "abs(bones_param['rotations']['Bip001-L-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4",
+            "abs(bones_param['rotations']['Bip001-R-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4"
+          ]
+        }
+      },
+      "overlap_detectable": []
     },
-    "Kiki": {
+    "Kiki_arma": {
       "path": "people/taobao/Kiki.blend",
-      "focus": "Kiki",
+      "focus": "Kiki_arma",
       "transformations": {
-        "Kiki": {
+        "Kiki_arma": {
           "center_offset": [0, 0, 0],
           "delta_transformation": {
             "rotation": [
@@ -534,9 +628,82 @@
           }
         }
       },
-      "overlap_detectable": ["Kiki"]
+      "bones": {
+        "Kiki_arma": {
+          "rotations": {
+            "Bip001-Spine": [
+              [-0.3, 0.8],
+              [-0.2, 0.2],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-R-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ]
+          },
+          "locations": {
+            
+          },
+          "conditions": [
+            "abs(bones_param['rotations']['Bip001-L-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4",
+            "abs(bones_param['rotations']['Bip001-R-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4"
+          ]
+        }
+      },
+      "overlap_detectable": []
+    },
+    "Lethe_arma": {
+      "path": "people/taobao/Lethe.blend",
+      "focus": "Lethe_arma",
+      "transformations": {
+        "Lethe_arma": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.95, 1.05]
+          }
+        }
+      },
+      "bones": {
+        "Lethe_arma": {
+          "rotations": {
+            "Bip001-Spine": [
+              [-0.3, 0.8],
+              [-0.2, 0.2],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-R-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ]
+          },
+          "locations": {
+            
+          },
+          "conditions": [
+            "abs(bones_param['rotations']['Bip001-L-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4",
+            "abs(bones_param['rotations']['Bip001-R-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4"
+          ]
+        }
+      },
+      "overlap_detectable": []
     }
-
   },
   "scenes": {
     "Bedroom": {
