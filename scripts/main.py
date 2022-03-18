@@ -89,7 +89,7 @@ for i in progressbar.progressbar(range(config_count), redirect_stdout=True):
         "config_i": str(i),
         "debug": str(debug_mode),
         "pixelart_path": str(pixelart_path).replace('\\', '/'),
-        "output_path": str(params.generator['output_path']).replace('\\', '/'),
+        "output_path": str(output_path).replace('\\', '/'),
         "work_path": str(work_path).replace('\\', '/'),
 
         "settings": pformat(params.generator['settings'] | {
