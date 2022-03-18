@@ -932,7 +932,7 @@
         {
           "location": [
             [-1, 0.5],
-            [-8, -6],
+            [-8.0, -6],
             [0.85, 1.35]
           ],
           "rotation": [
@@ -1059,6 +1059,1021 @@
             [1.5, 1.6],
             [-0.35, 0.35],
             [-0.35, 0.35]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_HighEndStore_A_grp": {
+      "path": "stores/KB3D_SFR_HighEndStore_A_grp.blend",
+      "region": [
+        [-4, 4],
+        [-4, -1],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_HighEndStore_A_Walkway",
+        "KB3D_SFR_HighEndStore_A_Walkway.001",
+        "KB3D_SFR_HighEndStore_A_Poles",
+        "KB3D_SFR_HighEndStore_A_Menu",
+        "KB3D_SFR_HighEndStore_A_Cart",
+        "KB3D_SFR_HighEndStore_A_DoorA",
+        "KB3D_SFR_HighEndStore_A_DoorB",
+        "KB3D_SFR_HighEndStore_A_DoorC",
+        "KB3D_SFR_HighEndStore_A_DoorD",
+        "KB3D_SFR_HighEndStore_A_DoorE",
+        "KB3D_SFR_HighEndStore_A_DoorF",
+        "KB3D_SFR_HighEndStore_A_Main",
+        "KB3D_SFR_HighEndStore_A_PlantsB",
+        "KB3D_SFR_HighEndStore_A_PlantsC"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, -8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.2, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_HighEndStore_B_grp": {
+      "path": "stores/KB3D_SFR_HighEndStore_B_grp.blend",
+      "region": [
+        [-4, 4],
+        [-4, -1],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_HighEndStore_B_Main",
+        "KB3D_SFR_HighEndStore_B_Walkway",
+        "KB3D_SFR_HighEndStore_B_Poles",
+        "KB3D_SFR_HighEndStore_B_TrashA",
+        "KB3D_SFR_HighEndStore_B_AdvertisementA"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_HighEndStore_C_grp": {
+      "path": "stores/KB3D_SFR_HighEndStore_C_grp.blend",
+      "region": [
+        [1.5, 6],
+        [-6, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_HighEndStore_C_Main",
+        "KB3D_SFR_HighEndStore_C_Walkwa",
+        "KB3D_SFR_HighEndStore_C_Poles",
+        "KB3D_SFR_HighEndStore_C_TrashA",
+        "KB3D_SFR_HighEndStore_C_TableC",
+        "KB3D_SFR_HighEndStore_C_TableD",
+        "KB3D_SFR_HighEndStore_C_Menu",
+        "KB3D_SFR_HighEndStore_C_AdvertisementA"
+      ],
+      "camera": [
+        {
+          "location": [
+            [2, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_HighEndStore_D_grp": {
+      "path": "stores/KB3D_SFR_HighEndStore_D_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_HighEndStore_D_Main",
+        "KB3D_SFR_HighEndStore_D_Walkway",
+        "KB3D_SFR_HighEndStore_D_Poles",
+        "KB3D_SFR_HighEndStore_D_TrashA",
+        "KB3D_SFR_HighEndStore_D_Booth"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_HighEndStore_E_grp": {
+      "path": "stores/KB3D_SFR_HighEndStore_E_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_HighEndStore_E_Main",
+        "KB3D_SFR_HighEndStore_E_Walkway",
+        "KB3D_SFR_HighEndStore_E_Poles",
+        "KB3D_SFR_HighEndStore_E_TrashA",
+        "KB3D_SFR_HighEndStore_E_PlantsA",
+        "KB3D_SFR_HighEndStore_E_AdvertisementA",
+        "KB3D_SFR_HighEndStore_E_Rope"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_HighEndStore_F_grp": {
+      "path": "stores/KB3D_SFR_HighEndStore_F_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_HighEndStore_F_Main",
+        "KB3D_SFR_HighEndStore_F_Walkway",
+        "KB3D_SFR_HighEndStore_F_Poles"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_HighEndStore_G_grp": {
+      "path": "stores/KB3D_SFR_HighEndStore_G_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_HighEndStore_G_Main",
+        "KB3D_SFR_HighEndStore_G_Walkway",
+        "KB3D_SFR_HighEndStore_G_Poles",
+        "KB3D_SFR_HighEndStore_G_PlantsA"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_HighEndStore_H_grp": {
+      "path": "stores/KB3D_SFR_HighEndStore_H_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_HighEndStore_H_Main",
+        "KB3D_SFR_HighEndStore_H_Walkway",
+        "KB3D_SFR_HighEndStore_H_Poles",
+        "KB3D_SFR_HighEndStore_H_TrashB",
+        "KB3D_SFR_HighEndStore_H_PlantsA"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_HighEndStore_I_grp": {
+      "path": "stores/KB3D_SFR_HighEndStore_I_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_HighEndStore_I_Main",
+        "KB3D_SFR_HighEndStore_I_Walkway",
+        "KB3D_SFR_HighEndStore_I_Poles",
+        "KB3D_SFR_HighEndStore_I_TrashA",
+        "KB3D_SFR_HighEndStore_I_PlantsA"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_HighEndStore_J_grp": {
+      "path": "stores/KB3D_SFR_HighEndStore_J_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_HighEndStore_J_Main",
+        "KB3D_SFR_HighEndStore_J_Walkway",
+        "KB3D_SFR_HighEndStore_J_Poles",
+        "KB3D_SFR_HighEndStore_J_PlantsA",
+        "KB3D_SFR_HighEndStore_J_PlantsB"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_LowEndStore_A_grp": {
+      "path": "stores/KB3D_SFR_LowEndStore_A_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_LowEndStore_A_Main",
+        "KB3D_SFR_LowEndStore_A_Walkway",
+        "KB3D_SFR_LowEndStore_A_Poles",
+        "KB3D_SFR_LowEndStore_A_Scaffolding",
+        "KB3D_SFR_LowEndStore_A_TrashB",
+        "KB3D_SFR_LowEndStore_A_PlanksB"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_LowEndStore_B_grp": {
+      "path": "stores/KB3D_SFR_LowEndStore_B_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_LowEndStore_B_Main",
+        "KB3D_SFR_LowEndStore_B_Walkway",
+        "KB3D_SFR_LowEndStore_B_TrashA",
+        "KB3D_SFR_LowEndStore_B_PlantsA"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_LowEndStore_C_grp": {
+      "path": "stores/KB3D_SFR_LowEndStore_C_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_LowEndStore_C_Main",
+        "KB3D_SFR_LowEndStore_C_Walkway",
+        "KB3D_SFR_LowEndStore_C_TrashA",
+        "KB3D_SFR_LowEndStore_C_FireHydrant",
+        "KB3D_SFR_LowEndStore_C_PlantA",
+        "KB3D_SFR_LowEndStore_C_PlantB",
+        "KB3D_SFR_LowEndStore_C_Menu"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_LowEndStore_D_grp": {
+      "path": "stores/KB3D_SFR_LowEndStore_D_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_LowEndStore_D_Main",
+        "KB3D_SFR_LowEndStore_D_Walkway",
+        "KB3D_SFR_LowEndStore_D_TrashA",
+        "KB3D_SFR_LowEndStore_D_TrashB",
+        "KB3D_SFR_LowEndStore_D_AdvertisementA"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_LowEndStore_E_grp": {
+      "path": "stores/KB3D_SFR_LowEndStore_E_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_LowEndStore_E_Main",
+        "KB3D_SFR_LowEndStore_E_Walkway",
+        "KB3D_SFR_LowEndStore_E_TrashA",
+        "KB3D_SFR_LowEndStore_E_TrashB",
+        "KB3D_SFR_LowEndStore_E_FireHydrant"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_LowEndStore_F_grp": {
+      "path": "stores/KB3D_SFR_LowEndStore_F_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_LowEndStore_F_Main",
+        "KB3D_SFR_LowEndStore_F_Walkway",
+        "KB3D_SFR_LowEndStore_F_Banners"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_LowEndStore_G_grp": {
+      "path": "stores/KB3D_SFR_LowEndStore_G_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_LowEndStore_G_Main",
+        "KB3D_SFR_LowEndStore_G_Walkway",
+        "KB3D_SFR_LowEndStore_G_Poles"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_LowEndStore_H_grp": {
+      "path": "stores/KB3D_SFR_LowEndStore_H_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_LowEndStore_H_Main",
+        "KB3D_SFR_LowEndStore_H_Walkway",
+        "KB3D_SFR_LowEndStore_H_Poles",
+        "KB3D_SFR_LowEndStore_H_MusicRecordsC",
+        "KB3D_SFR_LowEndStore_H_AdvertisementA"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_LowEndStore_I_grp": {
+      "path": "stores/KB3D_SFR_LowEndStore_I_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_LowEndStore_I_Main",
+        "KB3D_SFR_LowEndStore_I_Walkway",
+        "KB3D_SFR_LowEndStore_I_Poles",
+        "KB3D_SFR_LowEndStore_I_TrashA"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_LowEndStore_J_grp": {
+      "path": "stores/KB3D_SFR_LowEndStore_J_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_LowEndStore_J_Main",
+        "KB3D_SFR_LowEndStore_J_Walkway",
+        "KB3D_SFR_LowEndStore_J_BoxesA"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_MidEndStore_A_grp": {
+      "path": "stores/KB3D_SFR_MidEndStore_A_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_MidEndStore_A_Main",
+        "KB3D_SFR_MidEndStore_A_Walkway",
+        "KB3D_SFR_MidEndStore_A_Barrier",
+        "KB3D_SFR_MidEndStore_A_PlantsA"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_MidEndStore_B_grp": {
+      "path": "stores/KB3D_SFR_MidEndStore_B_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_MidEndStore_B_Main",
+        "KB3D_SFR_MidEndStore_B_Walkway",
+        "KB3D_SFR_MidEndStore_B_TrashA",
+        "KB3D_SFR_MidEndStore_B_AdvertisementB"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_MidEndStore_C_grp": {
+      "path": "stores/KB3D_SFR_MidEndStore_C_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_MidEndStore_C_Main",
+        "KB3D_SFR_MidEndStore_C_Walkway",
+        "KB3D_SFR_MidEndStore_C_AdvertisementA",
+        "KB3D_SFR_MidEndStore_C_Steps"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_MidEndStore_D_grp": {
+      "path": "stores/KB3D_SFR_MidEndStore_D_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_MidEndStore_D_Main",
+        "KB3D_SFR_MidEndStore_D_Walkway",
+        "KB3D_SFR_MidEndStore_D_FireHydrant"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_MidEndStore_E_grp": {
+      "path": "stores/KB3D_SFR_MidEndStore_E_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_MidEndStore_E_Main",
+        "KB3D_SFR_MidEndStore_E_Walkway",
+        "KB3D_SFR_MidEndStore_E_AdvertisementA",
+        "KB3D_SFR_MidEndStore_E_BenchA",
+        "KB3D_SFR_MidEndStore_E_BenchB"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_MidEndStore_F_grp": {
+      "path": "stores/KB3D_SFR_MidEndStore_F_grp.blend",
+      "region": [
+        [0, 4],
+        [-1.5, -6],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_MidEndStore_F_Main",
+        "KB3D_SFR_MidEndStore_F_Walkway",
+        "KB3D_SFR_MidEndStore_F_AdvertisementC",
+        "KB3D_SFR_MidEndStore_F_Poles"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_MidEndStore_G_grp": {
+      "path": "stores/KB3D_SFR_MidEndStore_G_grp.blend",
+      "region": [
+        [0, 4],
+        [-1.5, -6],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_MidEndStore_G_Main",
+        "KB3D_SFR_MidEndStore_G_Walkway",
+        "KB3D_SFR_MidEndStore_G_Poles",
+        "KB3D_SFR_MidEndStore_G_PlantsA",
+        "KB3D_SFR_MidEndStore_G_PlantsE"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_MidEndStore_H_grp": {
+      "path": "stores/KB3D_SFR_MidEndStore_H_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_MidEndStore_H_Main",
+        "KB3D_SFR_MidEndStore_H_Walkway",
+        "KB3D_SFR_MidEndStore_H_Poles"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_MidEndStore_I_grp": {
+      "path": "stores/KB3D_SFR_MidEndStore_I_grp.blend",
+      "region": [
+        [0, 4],
+        [-1.5, -6],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_MidEndStore_I_Main",
+        "KB3D_SFR_MidEndStore_I_Walkway",
+        "KB3D_SFR_MidEndStore_I_VegetableBoxC",
+        "KB3D_SFR_MidEndStore_I_VegetableBoxD"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
+          ],
+          "delta_rotation": [
+            [0, 0],
+            [0, 0],
+            [0, 0]
+          ]
+        }
+      ]
+    },
+    "KB3D_SFR_MidEndStore_J_grp": {
+      "path": "stores/KB3D_SFR_MidEndStore_J_grp.blend",
+      "region": [
+        [-3, 3],
+        [-4, -2],
+        [0.15, 0.25]
+      ],
+      "overlap_detectable": [
+        "KB3D_SFR_MidEndStore_J_Main",
+        "KB3D_SFR_MidEndStore_J_Walkway",
+        "KB3D_SFR_MidEndStore_J_Poles"
+      ],
+      "camera": [
+        {
+          "location": [
+            [0, 8],
+            [-10, -8],
+            [3, 4]
+          ],
+          "rotation": [
+            [1.1, 1.3],
+            [-0.35, 0.35],
+            [0.1, 0.5]
           ],
           "delta_rotation": [
             [0, 0],
