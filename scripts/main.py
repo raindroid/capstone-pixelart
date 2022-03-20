@@ -26,7 +26,7 @@ print(
     f"Running PixelArt from path {pixelart_path}, with blender {blender_dir} .")
 
 # =================================================================
-# ================= START PixelArt ================================
+# ================= START PixelArt configure setup ================
 debug_mode = args.debug
 print(f"PROGRESS: Started executing pixel art")
 print(f"INFO: debug_mode: {debug_mode}")
@@ -35,91 +35,90 @@ print(f"INFO: debug_mode: {debug_mode}")
 params = PixelartParam(str(pixelart_path / args.params_file))
 script_templace_path = str(pixelart_path / args.template_scipt_file)
 
-# clear output output folders
 work_path = pixelart_path / args.work
-if work_path.exists() and work_path.is_dir():
-    shutil.rmtree(work_path)
-output_path = pixelart_path / \
-    (params.generator['output_path']
-     if args.output == '$params' else args.output)
-if output_path.exists() and output_path.is_dir():
-    shutil.rmtree(output_path)
+output_path = pixelart_path / (params.generator['output_path']if args.output == '$params' else args.output)
+if not args.post_process:
+    # clear output output folders
+    if work_path.exists() and work_path.is_dir():
+        shutil.rmtree(work_path)
+    if output_path.exists() and output_path.is_dir():
+        shutil.rmtree(output_path)
 
-# create new working directory
-work_path.mkdir(parents=True, exist_ok=True)
-output_path.mkdir(parents=True, exist_ok=True)
+    # create new working directory
+    work_path.mkdir(parents=True, exist_ok=True)
+    output_path.mkdir(parents=True, exist_ok=True)
 
-print(f"INFO: Created working directory at {work_path}")
-print(f"INFO: Created output directory at {output_path}")
+    print(f"INFO: Created working directory at {work_path}")
+    print(f"INFO: Created output directory at {output_path}")
 
 # =================================================================
 # ================== START random rendering =======================
-config_count = params.generator['config_count'] if args.num_of_config == 0 else args.num_of_config
-object_count = params.generator['object_count'] if str(
-    args.range_of_objects) == str([0]) else args.range_of_objects
-image_count = params.generator['image_count'] if str(
-    args.range_of_images) == str([0]) else args.range_of_images
-use_gpu = args.use_gpu
-print(f"INFO: Rendering will {'try to' if use_gpu else 'not'} use GPU")
-print(f"INFO: Configuration count: {config_count}")
-print(f"INFO: Object count (range): {object_count}")
-print(f"INFO: Images range: {image_count}")
+if not args.post_process:
+    config_count = params.generator['config_count'] if args.num_of_config == 0 else args.num_of_config
+    object_count = params.generator['object_count'] if str(
+        args.range_of_objects) == str([0]) else args.range_of_objects
+    image_count = params.generator['image_count'] if str(
+        args.range_of_images) == str([0]) else args.range_of_images
+    use_gpu = args.use_gpu
+    print(f"INFO: Rendering will {'try to' if use_gpu else 'not'} use GPU")
+    print(f"INFO: Configuration count: {config_count}")
+    print(f"INFO: Object count (range): {object_count}")
+    print(f"INFO: Images range: {image_count}")
 
-for i in progressbar.progressbar(range(config_count), redirect_stdout=True):
+    for i in progressbar.progressbar(range(config_count), redirect_stdout=True):
 
-    # random select some objects within the given count range
-    object_list = list(params.objects.keys())
-    random.shuffle(object_list)
-    object_list = object_list[:random.randint(*object_count)]
-    object_param = {}
-    for key in object_list:
-        object_param[key] = params.objects[key]
+        # random select some objects within the given count range
+        object_list = list(params.objects.keys())
+        random.shuffle(object_list)
+        object_list = object_list[:random.randint(*object_count)]
+        object_param = {}
+        for key in object_list:
+            object_param[key] = params.objects[key]
 
-    # random select one scene
-    scene = random.choice(list(params.scenes.keys()))
-    scene_param = params.scenes[scene].copy()
-    scene_param['collection'] = scene
+        # random select one scene
+        scene = random.choice(list(params.scenes.keys()))
+        scene_param = params.scenes[scene].copy()
+        scene_param['collection'] = scene
 
-    # log out detail
-    print(
-        f"INFO: Created configuration with scene {scene} and objects {', '.join(object_list)}")
+        # log out detail
+        print(
+            f"INFO: Created configuration with scene {scene} and objects {', '.join(object_list)}")
 
-    # generate new configuration
-    configs = {"replacement": {
-        "config_i": str(i),
-        "debug": str(debug_mode),
-        "pixelart_path": str(pixelart_path).replace('\\', '/'),
-        "output_path": str(output_path).replace('\\', '/'),
-        "work_path": str(work_path).replace('\\', '/'),
+        # generate new configuration
+        configs = {"replacement": {
+            "config_i": str(i),
+            "debug": str(debug_mode),
+            "pixelart_path": str(pixelart_path).replace('\\', '/'),
+            "output_path": str(output_path).replace('\\', '/'),
+            "work_path": str(work_path).replace('\\', '/'),
 
-        "settings": pformat(params.generator['settings'] | {
-            "image_count": image_count, "GPU": use_gpu}, width=80),
-        "camera_param": pformat(params.camera, width=80),
-        "objects_param": pformat(object_param, width=80),
-        "scene_param": pformat(scene_param, width=80)}}
+            "settings": pformat(params.generator['settings'] | {
+                "image_count": image_count, "GPU": use_gpu}, width=80),
+            "camera_param": pformat(params.camera, width=80),
+            "objects_param": pformat(object_param, width=80),
+            "scene_param": pformat(scene_param, width=80)}}
 
-    script_directory = str(pixelart_path / f"work/sample_config_{i}.py")
-    with open(script_templace_path, "r") as tempfile, open(script_directory, "w") as outfile:
-        for line in tempfile:
-            for replacement in configs["replacement"].items():
-                key = f"__template_{replacement[0]}"
-                value = replacement[1]
-                if key in line:
-                    line = line.replace(key, value)
-            outfile.write(line)
+        script_directory = str(pixelart_path / f"work/sample_config_{i}.py")
+        with open(script_templace_path, "r") as tempfile, open(script_directory, "w") as outfile:
+            for line in tempfile:
+                for replacement in configs["replacement"].items():
+                    key = f"__template_{replacement[0]}"
+                    value = replacement[1]
+                    if key in line:
+                        line = line.replace(key, value)
+                outfile.write(line)
 
-    exe = PixelartExccuter(
-        blender_dir,
-        script_directory,
-    )
-    exe.run()
-    exe.wait(work_path / f"generator_config_{i}.log")
+        exe = PixelartExccuter(
+            blender_dir,
+            script_directory,
+        )
+        exe.run()
+        exe.wait(work_path / f"generator_config_{i}.log")
 
 
 # =================================================================
 # ========= Post Processing (bbox and mask generation) ============
 print("PROGRESS: Started post-processing")
-output_path = pixelart_path / params.generator['output_path']
 params_json = output_path / 'dataset.json'
 params_best_json = output_path / 'dataset_best.json'
 params_more_json = output_path / 'dataset_detail.json'

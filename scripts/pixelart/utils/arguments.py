@@ -24,6 +24,8 @@ def get_arguments():
                         default=[0], help="Range of images generated for each configuration (overwrite value in params.json)")
     parser.add_argument("-GPU", "--use_gpu", default=False, action="store_true",
                         help="Reset the use of GPU (overwrite value in params.json)")
+    parser.add_argument("-pp", "--post_process",
+                        default=False, action="store_true", help="Only execute post processing")
     parser.add_argument("-d", "--debug",
                         default=False, action="store_true", help="Debug mode")
 
