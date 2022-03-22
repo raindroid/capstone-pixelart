@@ -106,13 +106,7 @@ def update_camera(camera_param: Optional[Dict] = None, camera=None, dof=True):
             camera.data.dof.focus_object = blender.get_object(
                 camera_param.get('focus_object'))
 
-    bpy.ops.object.select_all(action='DESELECT')
-    
-    # Once camera is updated, also update the lights (includeing sun light and spot light to simulate flash lights)
-    blender.remove_object_type("LIGHT")
-    create_sun_light()
-    create_spot_light()
-    
+    bpy.ops.object.select_all(action='DESELECT')    
     return camera
 
 
@@ -369,6 +363,11 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
 
         if not obj_in_camera:
             continue
+        
+        # Once camera is updated, also update the lights (includeing sun light and spot light to simulate flash lights)
+        blender.remove_object_type("LIGHT")
+        create_sun_light()
+        create_spot_light()
 
         render_count += 1
         result.append({'camera_settings': camera_res_param,
