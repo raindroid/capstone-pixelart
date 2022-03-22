@@ -11,6 +11,12 @@ import blender_operation as blender
 import numpy as np
 from inspect import currentframe, getframeinfo
 
+def random_normal_cutoff(center: float, scale: float, a: float, b: float) -> float:
+    r = None
+    if a > b: a, b = b, a
+    while r is None or r < a or r > b:
+        r = np.random.normal(center, scale)
+    return r
 
 def randomize_list(l: Iterable, normal: bool = False) -> tuple:
     if normal:
@@ -27,6 +33,49 @@ def randomize_list(l: Iterable, normal: bool = False) -> tuple:
     else:
         return tuple(random.uniform(*r) for r in l)
 
+def create_sun_light():
+    sun_light_data = bpy.data.lights.new(name="sun_light_data", type="SUN")
+    # update strength
+    sun_light_data.energy = random_normal_cutoff(1.0, 0.25, 0.4, 3)
+    # update rgb
+    for c in range(3):
+        sun_light_data.color[c] = random_normal_cutoff(0.90 + ((3-c) ** 2) * 0.025, 0.03, 0.75, 1.0)
+    # update angle
+    sun_light_data.angle = np.random.uniform(0, np.pi)
+
+    sun_light_obj = bpy.data.objects.new(name="sun_light", object_data=sun_light_data)
+    bpy.context.collection.objects.link(sun_light_obj)
+
+    # update location
+    sun_light_obj.location.z = random_normal_cutoff(15, 5, 8, 40)
+    sun_light_obj.location.x = random_normal_cutoff(0, 3, -10, 10)
+    sun_light_obj.location.y = random_normal_cutoff(0, 3, -10, 10)
+
+    # update rotation
+    for r in range(3):
+        sun_light_obj.rotation_euler[r] = random_normal_cutoff(0, np.pi/8, -np.pi/4, np.pi/4)
+
+def create_spot_light(camera='MainCamera'):
+    spot_light_data = bpy.data.lights.new(name="spot_light_data", type="SPOT")
+    # update strength and radius
+    spot_light_data.energy = random_normal_cutoff(750, 600, 200, 2500)
+    spot_light_data.shadow_soft_size = random_normal_cutoff(1.5, 1.0, 0.5, 5.0)
+    spot_light_data.spot_blend = 1
+    spot_light_data.spot_size = random_normal_cutoff(np.pi/3, np.pi/4, np.pi/4, np.pi)
+    spot_light_data.use_shadow = False
+    # update rgb
+    for c in range(3):
+        spot_light_data.color[c] = random_normal_cutoff(0.92 + (3-c) * 0.03, 0.03, 0.75, 1.0)
+    
+    spot_light_obj = bpy.data.objects.new(name="spot_light", object_data=spot_light_data)
+    bpy.context.collection.objects.link(spot_light_obj)
+    
+    # update location
+    spot_light_obj.location =  bpy.data.objects[camera].location
+    spot_light_obj.rotation_euler =  bpy.data.objects[camera].rotation_euler
+    for i in range(3):
+        spot_light_obj.location[i] += random_normal_cutoff(0, 0.5, -2, 2)
+        spot_light_obj.rotation_euler[i] += random_normal_cutoff(0, np.pi/16, -np.pi/6, np.pi/6)
 
 def update_camera(camera_param: Optional[Dict] = None, camera=None, dof=True):
     if camera is None:
@@ -58,6 +107,12 @@ def update_camera(camera_param: Optional[Dict] = None, camera=None, dof=True):
                 camera_param.get('focus_object'))
 
     bpy.ops.object.select_all(action='DESELECT')
+    
+    # Once camera is updated, also update the lights (includeing sun light and spot light to simulate flash lights)
+    blender.remove_object_type("LIGHT")
+    create_sun_light()
+    create_spot_light()
+    
     return camera
 
 
@@ -118,7 +173,7 @@ def render_setup(GPU: bool, production: bool = True) -> None:
         bpy.context.scene.render.resolution_x = 1920  # image width
         bpy.context.scene.render.resolution_y = 1080  # image height
         bpy.context.scene.cycles.preview_denoising_start_sample = 4
-        bpy.context.scene.cycles.samples = 64
+        bpy.context.scene.cycles.samples = (64, 48, 40, 36, 32, 16)[random.randint(0, 6)]
         bpy.context.scene.cycles.preview_samples = 16
     else:
         bpy.context.scene.render.resolution_x = 960  # image width

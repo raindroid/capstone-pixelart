@@ -41,10 +41,15 @@ def get_check_object(object: str, collection: str):
 
 
 def get_objects(collection_name: str, condition: Optional[Callable[[Any], Any]] = None):
+    objs = bpy.data.collections.get(collection_name)
+    if objs is None:
+        raise ValueError(
+            f"No object found in {collection_name}, possibly a typo. Please check before proceed")
+
     if condition:
-        return list(filter(condition, bpy.data.collections.get(collection_name).all_objects))
+        return list(filter(condition, objs.all_objects))
     else:
-        return list(bpy.data.collections.get(collection_name).all_objects)
+        return list(objs.all_objects)
 
 
 def remove_object(object: str) -> None:
@@ -54,6 +59,7 @@ def remove_object(object: str) -> None:
 
 
 def remove_object_type(type: str = "CAMERA") -> None:
+    bpy.ops.object.select_all(action="DESELECT")
     for ob in bpy.data.objects:
         if ob.type == type:
             ob.select_set(True)
