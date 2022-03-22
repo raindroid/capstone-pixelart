@@ -92,8 +92,8 @@ if not args.post_process:
             "output_path": str(output_path).replace('\\', '/'),
             "work_path": str(work_path).replace('\\', '/'),
 
-            "settings": pformat(params.generator['settings'] | {
-                "image_count": image_count, "GPU": use_gpu}, width=80),
+            "settings": pformat({**params.generator['settings'], **{
+                "image_count": image_count, "GPU": use_gpu}}, width=80),
             "camera_param": pformat(params.camera, width=80),
             "objects_param": pformat(object_param, width=80),
             "scene_param": pformat(scene_param, width=80)}}
