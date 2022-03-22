@@ -36,7 +36,7 @@ def randomize_list(l: Iterable, normal: bool = False) -> tuple:
 def create_sun_light():
     sun_light_data = bpy.data.lights.new(name="sun_light_data", type="SUN")
     # update strength
-    sun_light_data.energy = random_normal_cutoff(1.0, 0.25, 0.4, 3)
+    sun_light_data.energy = random_normal_cutoff(2.0, 2.25, 0.4, 5)
     # update rgb
     for c in range(3):
         sun_light_data.color[c] = random_normal_cutoff(0.90 + ((3-c) ** 2) * 0.025, 0.03, 0.75, 1.0)
