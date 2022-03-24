@@ -883,7 +883,920 @@
         }
       },
       "overlap_detectable": ["Lethe"]
+    },
+    "Ein_arma": {
+      "path": "people/taobao/Ein/Ein.blend",
+      "focus": "Ein_arma",
+      "transformations": {
+        "Ein_arma": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.1]
+          }
+        }
+      },
+      "bones": {
+        "Ein_arma": {
+          "rotations": {
+            "Bip001-Spine": [
+              [-0.3, 0.8],
+              [-0.2, 0.2],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-R-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-L-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-L-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ],
+            "Bip001-R-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-R-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-R-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ]
+          },
+          "locations": {
+            
+          },
+          "conditions": [
+            "abs(bones_param['rotations']['Bip001-L-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4",
+            "abs(bones_param['rotations']['Bip001-R-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4"
+          ]
+        }
+      },
+      "overlap_detectable": ["Ein"]
+    },
+    "Elizabeth_arma": {
+      "path": "people/taobao/Elizabeth/Elizabeth.blend",
+      "focus": "Elizabeth_arma",
+      "transformations": {
+        "Elizabeth_arma": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.01]
+          }
+        }
+      },
+      "bones": {
+        "Elizabeth_arma": {
+          "rotations": {
+            "Bip001-Spine": [
+              [-0.3, 0.8],
+              [-0.2, 0.2],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-R-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-L-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-L-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ],
+            "Bip001-R-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-R-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-R-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ]
+          },
+          "locations": {
+            
+          },
+          "conditions": [
+            "abs(bones_param['rotations']['Bip001-L-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4",
+            "abs(bones_param['rotations']['Bip001-R-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4"
+          ]
+        }
+      },
+      "overlap_detectable": ["Elizabeth"]
+    },
+    "Echo_arma": {
+      "path": "people/taobao/Echo/Echo.blend",
+      "focus": "Echo_arma",
+      "transformations": {
+        "Echo_arma": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.1]
+          }
+        }
+      },
+      "bones": {
+        "Echo_arma": {
+          "rotations": {
+            "Bip001-Spine": [
+              [-0.3, 0.8],
+              [-0.2, 0.2],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-R-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-L-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-L-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ],
+            "Bip001-R-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-R-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-R-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ]
+          },
+          "locations": {
+            
+          },
+          "conditions": [
+            "abs(bones_param['rotations']['Bip001-L-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4",
+            "abs(bones_param['rotations']['Bip001-R-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4"
+          ]
+        }
+      },
+      "overlap_detectable": ["Echo"]
+    },
+    "Garam_arma": {
+      "path": "people/taobao/Garam/Garam.blend",
+      "focus": "Garam_arma",
+      "transformations": {
+        "Garam_arma": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 1.1]
+          }
+        }
+      },
+      "bones": {
+        "Garam_arma": {
+          "rotations": {
+            "Bip001-Spine": [
+              [-0.3, 0.8],
+              [-0.2, 0.2],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-R-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-L-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-L-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ],
+            "Bip001-R-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-R-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-R-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ]
+          },
+          "locations": {
+            
+          },
+          "conditions": [
+            "abs(bones_param['rotations']['Bip001-L-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4",
+            "abs(bones_param['rotations']['Bip001-R-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4"
+          ]
+        }
+      },
+      "overlap_detectable": ["Garam"]
+    },
+    "Halt_arma": {
+      "path": "people/taobao/Halt/Halt.blend",
+      "focus": "Halt_arma",
+      "transformations": {
+        "Halt_arma": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.8, 0.9]
+          }
+        }
+      },
+      "bones": {
+        "Halt_arma": {
+          "rotations": {
+            "Bip001-Spine": [
+              [-0.3, 0.8],
+              [-0.2, 0.2],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-R-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-L-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-L-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ],
+            "Bip001-R-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-R-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-R-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ]
+          },
+          "locations": {
+            
+          },
+          "conditions": [
+            "abs(bones_param['rotations']['Bip001-L-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4",
+            "abs(bones_param['rotations']['Bip001-R-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4"
+          ]
+        }
+      },
+      "overlap_detectable": ["Halt"]
+    },
+    "Hanna_arma": {
+      "path": "people/taobao/Hanna/Hanna.blend",
+      "focus": "Hanna_arma",
+      "transformations": {
+        "Hanna_arma": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 0.95]
+          }
+        }
+      },
+      "bones": {
+        "Hanna_arma": {
+          "rotations": {
+            "Bip001-Spine": [
+              [-0.3, 0.8],
+              [-0.2, 0.2],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-R-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-L-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-L-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ],
+            "Bip001-R-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-R-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-R-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ]
+          },
+          "locations": {
+            
+          },
+          "conditions": [
+            "abs(bones_param['rotations']['Bip001-L-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4",
+            "abs(bones_param['rotations']['Bip001-R-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4"
+          ]
+        }
+      },
+      "overlap_detectable": ["Hanna"]
+    },
+    "Heracles_arma": {
+      "path": "people/taobao/Heracles/Heracles.blend",
+      "focus": "Heracles_arma",
+      "transformations": {
+        "Heracles_arma": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 0.95]
+          }
+        }
+      },
+      "bones": {
+        "Heracles_arma": {
+          "rotations": {
+            "Bip001-Spine": [
+              [-0.3, 0.8],
+              [-0.2, 0.2],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-R-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-L-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-L-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ],
+            "Bip001-R-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-R-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-R-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ]
+          },
+          "locations": {
+            
+          },
+          "conditions": [
+            "abs(bones_param['rotations']['Bip001-L-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4",
+            "abs(bones_param['rotations']['Bip001-R-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4"
+          ]
+        }
+      },
+      "overlap_detectable": ["Heracles"]
+    },
+    "Isaac_arma": {
+      "path": "people/taobao/Isaac/Isaac.blend",
+      "focus": "Isaac_arma",
+      "transformations": {
+        "Isaac_arma": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 0.95]
+          }
+        }
+      },
+      "bones": {
+        "Isaac_arma": {
+          "rotations": {
+            "Bip001-Spine": [
+              [-0.3, 0.8],
+              [-0.2, 0.2],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-R-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-L-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-L-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ],
+            "Bip001-R-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-R-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-R-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ]
+          },
+          "locations": {
+            
+          },
+          "conditions": [
+            "abs(bones_param['rotations']['Bip001-L-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4",
+            "abs(bones_param['rotations']['Bip001-R-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4"
+          ]
+        }
+      },
+      "overlap_detectable": ["Isaac"]
+    },
+    "Melissa_arma": {
+      "path": "people/taobao/Melissa/Melissa.blend",
+      "focus": "Melissa_arma",
+      "transformations": {
+        "Melissa_arma": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 0.95]
+          }
+        }
+      },
+      "bones": {
+        "Melissa_arma": {
+          "rotations": {
+            "Bip001-Spine": [
+              [-0.3, 0.8],
+              [-0.2, 0.2],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-R-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-L-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-L-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ],
+            "Bip001-R-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-R-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-R-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ]
+          },
+          "locations": {
+            
+          },
+          "conditions": [
+            "abs(bones_param['rotations']['Bip001-L-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4",
+            "abs(bones_param['rotations']['Bip001-R-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4"
+          ]
+        }
+      },
+      "overlap_detectable": ["Melissa"]
+    },
+    "Zeus_arma": {
+      "path": "people/taobao/Zeus/Zeus.blend",
+      "focus": "Zeus_arma",
+      "transformations": {
+        "Zeus_arma": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [0.9, 0.95]
+          }
+        }
+      },
+      "bones": {
+        "Zeus_arma": {
+          "rotations": {
+            "Bip001-Spine": [
+              [-0.3, 0.8],
+              [-0.2, 0.2],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-R-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-L-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-L-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ],
+            "Bip001-R-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-R-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-R-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ]
+          },
+          "locations": {
+            
+          },
+          "conditions": [
+            "abs(bones_param['rotations']['Bip001-L-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4",
+            "abs(bones_param['rotations']['Bip001-R-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4"
+          ]
+        }
+      },
+      "overlap_detectable": ["Zeus"]
+    },
+    "Wish_arma": {
+      "path": "people/taobao/Wish/Wish.blend",
+      "focus": "Wish_arma",
+      "transformations": {
+        "Wish_arma": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [1, 1.2]
+          }
+        }
+      },
+      "bones": {
+        "Wish_arma": {
+          "rotations": {
+            "Bip001-Spine": [
+              [-0.3, 0.8],
+              [-0.2, 0.2],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-R-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-L-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-L-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ],
+            "Bip001-R-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-R-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-R-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ]
+          },
+          "locations": {
+            
+          },
+          "conditions": [
+            "abs(bones_param['rotations']['Bip001-L-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4",
+            "abs(bones_param['rotations']['Bip001-R-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4"
+          ]
+        }
+      },
+      "overlap_detectable": ["Wish"]
+    },
+    "Hope_arma": {
+      "path": "people/taobao/Hope/Hope.blend",
+      "focus": "Hope_arma",
+      "transformations": {
+        "Hope_arma": {
+          "center_offset": [0, 0, 0],
+          "delta_transformation": {
+            "rotation": [
+              [0, 0],
+              [0, 0],
+              [-3.14159, 3.14159]
+            ],
+            "scale": [1, 1.2]
+          }
+        }
+      },
+      "bones": {
+        "Hope_arma": {
+          "rotations": {
+            "Bip001-Spine": [
+              [-0.3, 0.8],
+              [-0.2, 0.2],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-R-Thigh": [
+              [-0.3, 0.4],
+              [-0.4, 0.4],
+              [-0.2, 0.2]
+            ],
+            "Bip001-L-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-L-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-L-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ],
+            "Bip001-R-UpperArm": [
+              [-0.3, 0.6],
+              [-0.4, 0.4],
+              [-0.2, 0.6]
+            ],
+            "Bip001-R-Forearm": [
+              [0, 0],
+              [-0.5, 0.5],
+              [-1.0, 0]
+            ],
+            "Bip001-R-Hand": [
+              [-0.2, 0.5],
+              [0, 0],
+              [-0.3, 0.2]
+            ]
+          },
+          "locations": {
+            
+          },
+          "conditions": [
+            "abs(bones_param['rotations']['Bip001-L-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4",
+            "abs(bones_param['rotations']['Bip001-R-Thigh'][0] - bones_param['rotations']['Bip001-Spine'][0]) <= 0.4"
+          ]
+        }
+      },
+      "overlap_detectable": ["Hope"]
     }
+
   },
   "scenes": {
     "Bedroom": {
