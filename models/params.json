@@ -2590,7 +2590,7 @@
       "overlap_detectable": [
         "KB3D_SFR_LowEndStore_I_Main",
         "KB3D_SFR_LowEndStore_I_Walkway",
-        "KB3D_SFR_LowEndStore_I_Poles",
+        "KB3D_SFR_LowEndStore_I_FireHydrant",
         "KB3D_SFR_LowEndStore_I_TrashA"
       ],
       "camera": [
