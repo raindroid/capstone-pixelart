@@ -133,13 +133,18 @@ def update_bones(collection: str, object_name: str, params: Dict[str, Any]) -> N
     # this is necessary for transformations to take effect immediately
     target.select_set(True)
 
-    # apply transformations
-    for bone_name, location in params['locations'].items():
-        target.pose.bones[bone_name].location = Vector(location)
+    try:
+        # apply transformations
+        for bone_name, location in params['locations'].items():
+            target.pose.bones[bone_name].location = Vector(location)
 
-    for bone_name, rotation in params['rotations'].items():
-        target.pose.bones[bone_name].rotation_mode = "XYZ"
-        target.pose.bones[bone_name].rotation_euler = Euler(rotation, 'XYZ')
+        for bone_name, rotation in params['rotations'].items():
+            target.pose.bones[bone_name].rotation_mode = "XYZ"
+            target.pose.bones[bone_name].rotation_euler = Euler(rotation, 'XYZ')
+    except Exception as e:
+        print(
+            f"Unknown bone name in object {object_name} of collection {collection}")
+        raise(e)
 
     bpy.ops.object.select_all(action='DESELECT')
 
