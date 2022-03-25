@@ -1,6 +1,6 @@
 
 import random
-import os
+import os, sys
 import uuid
 from pprint import pprint
 from math import pi
@@ -143,8 +143,8 @@ def update_bones(collection: str, object_name: str, params: Dict[str, Any]) -> N
             target.pose.bones[bone_name].rotation_euler = Euler(rotation, 'XYZ')
     except Exception as e:
         print(
-            f"Unknown bone name in object {object_name} of collection {collection}")
-        raise(e)
+            f"Warning: Unknown bone name in object {object_name} of collection {collection}", file=sys.stderr)
+        print(e, file=sys.stderr)
 
     bpy.ops.object.select_all(action='DESELECT')
 
@@ -285,10 +285,16 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
 
                         # overlap/condition detection
                         condition_pass = True
-                        for condition in object_param['conditions']:
-                            if not eval(condition):
-                                condition_pass = False
-                                break
+                        try:
+                            for condition in object_param['conditions']:
+                                if not eval(condition):
+                                    condition_pass = False
+                                    break
+                        except Exception as e:
+                            print(
+                                f"Warning: Unknown bone name (conditions) in object {object_name} of collection {collection_name}", 
+                                file=sys.stderr)
+                            print(e, file=sys.stderr)
                         if condition_pass:
                             overlap = False
                             break
