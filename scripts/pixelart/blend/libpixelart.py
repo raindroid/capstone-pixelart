@@ -348,7 +348,8 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
         print(f"Found possible solutions for id {image_id}")
 
         # randome select focus_object
-        focus_object = objects_param[random.choice(objects_list)]['focus']
+        focus_collection = random.choice(objects_list)
+        focus_object = objects_param[focus_object]['focus']
 
         # randomize the camera parameters
         obj_in_camera = False
@@ -356,7 +357,7 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
         for _ in range(settings['camera_retry_limit']):
             camera_settings = random.choice(scene_param['camera'])
             camera_res_param = {
-                "focus_collection": random.choice(objects_list),
+                "focus_collection": focus_collection,
                 "focus_object": focus_object,
                 "lens": random.choice(camera_param['lens']),
                 "location": randomize_list(camera_settings['location'], normal=True),
