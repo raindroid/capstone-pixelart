@@ -349,7 +349,7 @@ def render_images(camera_param: Dict, scene_param: Dict, objects_param: Dict,
 
         # randome select focus_object
         focus_collection = random.choice(objects_list)
-        focus_object = objects_param[focus_object]['focus']
+        focus_object = objects_param[focus_collection]['focus']
 
         # randomize the camera parameters
         obj_in_camera = False
