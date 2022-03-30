@@ -12,7 +12,7 @@
     }
   },
   "camera": {
-    "lens": [35, 55, 70, 85],
+    "lens": [55, 70, 85, 105],
     "fstop": [1.0, 16]
   },
   "objects": {
@@ -321,112 +321,6 @@
         }
       },
       "overlap_detectable": ["Woman_Formal_Stand_Pose2"]
-    },
-    "Man": {
-      "path": "no_cloth_man.blend",
-      "focus": "metarig",
-      "transformations": {
-        "metarig": {
-          "center_offset": [0.915681, 0.121567, -0.040797],
-          "delta_transformation": {
-            "rotation": [
-              [-0.785, 0.785],
-              [-0.785, 0.785],
-              [-3.14159, 3.14159]
-            ],
-            "scale": [0.8, 1.2]
-          }
-        }
-      },
-      "bones": {
-        "metarig": {
-          "rotations": {
-            "head": [
-              [-0.4, 0.4],
-              [-0.3, 0.3],
-              [-0.3, 0.3]
-            ],
-            "neck": [
-              [-0.2, 0.2],
-              [-0.4, 0.4],
-              [-0.4, 0.4]
-            ],
-            "chest": [
-              [-0.2, 0.2],
-              [-0.4, 0.4],
-              [-0.2, 0.2]
-            ],
-            "spine": [
-              [-0.3, 0.8],
-              [-0.2, 0.2],
-              [-0.2, 0.2]
-            ],
-            "hips": [
-              [-0.3, 0.4],
-              [-0.4, 0.4],
-              [-0.2, 0.2]
-            ],
-            "upper_arm.L": [
-              [-0.3, 0.6],
-              [-0.4, 0.4],
-              [-0.2, 0.6]
-            ],
-            "forearm.L": [
-              [0, 0],
-              [-0.5, 0.5],
-              [-1.0, 0]
-            ],
-            "hand.L": [
-              [-0.2, 0.5],
-              [0, 0],
-              [-0.3, 0.2]
-            ],
-            "upper_arm.R": [
-              [-0.3, 0.6],
-              [-0.4, 0.4],
-              [-0.2, 0.6]
-            ],
-            "forearm.R": [
-              [0, 0],
-              [-0.5, 0.5],
-              [-1.0, 0]
-            ],
-            "hand.R": [
-              [-0.2, 0.5],
-              [0, 0],
-              [-0.3, 0.2]
-            ],
-            "shin.L.001": [
-              [-0.2, 0],
-              [0, 0],
-              [0, 0]
-            ],
-            "shin.R.001": [
-              [-0.2, 0],
-              [0, 0],
-              [0, 0]
-            ]
-          },
-          "locations": {
-            "shin.L.001": [[-0.4, 0.5], [-1.2, 0.4], [-1, 1.2], 1],
-            "thigh.L.001": [
-              [-1, 1],
-              [-1, 1],
-              [-1, 1]
-            ],
-            "shin.R.001": [[-0.5, 0.4], [-1.2, 0.4], [-1, 1.2], 1],
-            "thigh.R.001": [
-              [-1, 1],
-              [-1, 1],
-              [-1, 1]
-            ]
-          },
-          "conditions": [
-            "abs(bones_param['rotations']['hips'][0] - bones_param['rotations']['spine'][0]) <= 0.4"
-          ]
-        }
-      },
-      "overlap_detectable": ["body"]
     },
     "Airen_arma": {
       "path": "people/taobao/Airen/Airen.blend",
@@ -1945,7 +1839,7 @@
       "path": "stores/KB3D_SFR_HighEndStore_A_grp.blend",
       "region": [
         [-4, 4],
-        [-3.5, -1.5],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -1967,11 +1861,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -1987,7 +1881,7 @@
       "path": "stores/KB3D_SFR_HighEndStore_B_grp.blend",
       "region": [
         [-4, 4],
-        [-3.5, -1.5],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2001,11 +1895,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2021,7 +1915,7 @@
       "path": "stores/KB3D_SFR_HighEndStore_C_grp.blend",
       "region": [
         [1.5, 6],
-        [-5, -2],
+        [-7, -4],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2038,11 +1932,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2057,8 +1951,8 @@
     "KB3D_SFR_HighEndStore_D_grp": {
       "path": "stores/KB3D_SFR_HighEndStore_D_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2072,11 +1966,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2091,8 +1985,8 @@
     "KB3D_SFR_HighEndStore_E_grp": {
       "path": "stores/KB3D_SFR_HighEndStore_E_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2107,11 +2001,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2126,8 +2020,8 @@
     "KB3D_SFR_HighEndStore_F_grp": {
       "path": "stores/KB3D_SFR_HighEndStore_F_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2139,11 +2033,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2158,8 +2052,8 @@
     "KB3D_SFR_HighEndStore_G_grp": {
       "path": "stores/KB3D_SFR_HighEndStore_G_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2172,11 +2066,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2191,8 +2085,8 @@
     "KB3D_SFR_HighEndStore_H_grp": {
       "path": "stores/KB3D_SFR_HighEndStore_H_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2206,11 +2100,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2225,8 +2119,8 @@
     "KB3D_SFR_HighEndStore_I_grp": {
       "path": "stores/KB3D_SFR_HighEndStore_I_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2240,11 +2134,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2259,8 +2153,8 @@
     "KB3D_SFR_HighEndStore_J_grp": {
       "path": "stores/KB3D_SFR_HighEndStore_J_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2274,11 +2168,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2293,8 +2187,8 @@
     "KB3D_SFR_LowEndStore_A_grp": {
       "path": "stores/KB3D_SFR_LowEndStore_A_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2309,11 +2203,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2328,8 +2222,8 @@
     "KB3D_SFR_LowEndStore_B_grp": {
       "path": "stores/KB3D_SFR_LowEndStore_B_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2342,11 +2236,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2361,8 +2255,8 @@
     "KB3D_SFR_LowEndStore_C_grp": {
       "path": "stores/KB3D_SFR_LowEndStore_C_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2378,11 +2272,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2397,8 +2291,8 @@
     "KB3D_SFR_LowEndStore_D_grp": {
       "path": "stores/KB3D_SFR_LowEndStore_D_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2412,11 +2306,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2431,8 +2325,8 @@
     "KB3D_SFR_LowEndStore_E_grp": {
       "path": "stores/KB3D_SFR_LowEndStore_E_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2446,11 +2340,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2465,8 +2359,8 @@
     "KB3D_SFR_LowEndStore_F_grp": {
       "path": "stores/KB3D_SFR_LowEndStore_F_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2478,11 +2372,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2497,8 +2391,8 @@
     "KB3D_SFR_LowEndStore_G_grp": {
       "path": "stores/KB3D_SFR_LowEndStore_G_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2510,11 +2404,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2529,8 +2423,8 @@
     "KB3D_SFR_LowEndStore_H_grp": {
       "path": "stores/KB3D_SFR_LowEndStore_H_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2544,11 +2438,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2563,8 +2457,8 @@
     "KB3D_SFR_LowEndStore_I_grp": {
       "path": "stores/KB3D_SFR_LowEndStore_I_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2577,11 +2471,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2596,8 +2490,8 @@
     "KB3D_SFR_LowEndStore_J_grp": {
       "path": "stores/KB3D_SFR_LowEndStore_J_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2609,11 +2503,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2628,8 +2522,8 @@
     "KB3D_SFR_MidEndStore_A_grp": {
       "path": "stores/KB3D_SFR_MidEndStore_A_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2642,11 +2536,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2661,8 +2555,8 @@
     "KB3D_SFR_MidEndStore_B_grp": {
       "path": "stores/KB3D_SFR_MidEndStore_B_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2675,11 +2569,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2694,8 +2588,8 @@
     "KB3D_SFR_MidEndStore_C_grp": {
       "path": "stores/KB3D_SFR_MidEndStore_C_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2708,11 +2602,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2727,8 +2621,8 @@
     "KB3D_SFR_MidEndStore_D_grp": {
       "path": "stores/KB3D_SFR_MidEndStore_D_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2740,11 +2634,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2759,8 +2653,8 @@
     "KB3D_SFR_MidEndStore_E_grp": {
       "path": "stores/KB3D_SFR_MidEndStore_E_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2774,11 +2668,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2794,7 +2688,7 @@
       "path": "stores/KB3D_SFR_MidEndStore_F_grp.blend",
       "region": [
         [0, 4],
-        [-1.5, -6],
+        [-7, -4],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2807,11 +2701,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2827,7 +2721,7 @@
       "path": "stores/KB3D_SFR_MidEndStore_G_grp.blend",
       "region": [
         [0, 4],
-        [-1.5, -6],
+        [-7, -4],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2841,11 +2735,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2860,8 +2754,8 @@
     "KB3D_SFR_MidEndStore_H_grp": {
       "path": "stores/KB3D_SFR_MidEndStore_H_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2873,11 +2767,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2893,7 +2787,7 @@
       "path": "stores/KB3D_SFR_MidEndStore_I_grp.blend",
       "region": [
         [0, 4],
-        [-1.5, -6],
+        [-7, -4],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2906,11 +2800,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
@@ -2925,8 +2819,8 @@
     "KB3D_SFR_MidEndStore_J_grp": {
       "path": "stores/KB3D_SFR_MidEndStore_J_grp.blend",
       "region": [
-        [-3, 3],
-        [-3.5, -1.5],
+        [-1, 4],
+        [-7, -3],
         [0.15, 0.25]
       ],
       "overlap_detectable": [
@@ -2938,11 +2832,11 @@
         {
           "location": [
             [4.5, 6],
-            [-7.5, -6],
+            [-10, -8],
             [2.5, 3]
           ],
           "rotation": [
-            [1.22, 1.3],
+            [1.25, 1.35],
             [-0.35, 0.35],
             [0.5, 0.9]
           ],
