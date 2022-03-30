@@ -59,7 +59,7 @@ def generate_mask_bbox_and_check_small(mask_file_name: Dict, dataset_dir: str, t
     np.save(str(dataset_path / "masks" / mask_file_name), mask)
 
     # update dataset configs    
-    return box, list(img.shape), ((box[2] - box[0]) * (box[3] - box[1])) / \
+    return box, list(img.shape), np.sum(mask) / \
         (mask.shape[0] * mask.shape[1]) < threshold
 
 
