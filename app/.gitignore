@@ -1,0 +1,7 @@
+*.pt
+*.pth
+*.index
+*001
+*002
+
+node_modules

@@ -1,0 +1,6 @@
+torchvision
+torch
+pillow
+scikit-image
+nunmpy>=1.22
+scipy>=1.8
