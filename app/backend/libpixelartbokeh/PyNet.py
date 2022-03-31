@@ -34,7 +34,7 @@ class PyNet():
             
         I[0][:, :, :3] = img.astype(np.float32)
         with tf.Session() as sess:
-            saver = tf.train.import_meta_graph(self.meta)
+            saver = tf.train.Saver()
             saver.restore(sess, self.checkpoint_path)
             x, bokeh_image = self.net
             if mask is not None: I[0][..., 3] = mask
