@@ -1,8 +1,26 @@
 {
-    "name": "tensorflowjs",
-    "version": "0.0.1",
-    "dependencies": {
-        "dotenv": "^16.0.0",
-        "express": "latest"
-    }
+  "name": "ece496",
+  "version": "0.0.1",
+  "description": "Backend server for course timetable",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/raindroid/capstone-pixelart"
+  },
+  "author": "Rain Wu",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server-express": "^3.6.7",
+    "dotenv": "^16.0.0",
+    "express": "latest",
+    "graphql": "^16.3.0",
+    "lodash": "^4.17.21",
+    "mongo-sanitize": "^1.1.0",
+    "mongoose": "^6.2.9",
+    "uuid": "^8.3.2"
+  }
 }

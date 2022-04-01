@@ -1,8 +1,11 @@
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2' 
+
+import tensorflow as tff
+import tensorflow.compat.v1 as tf
 
 from .models.PyNETModel import createPyNet
 from .helper import crop_32x
-import tensorflow as tff
-import tensorflow.compat.v1 as tf
 
 tf.compat.v1.reset_default_graph()
 tf.disable_v2_behavior()
@@ -13,7 +16,6 @@ class PyNet():
     def __init__(self, checkpoint_path, meta="./libpixelartbokeh/models/PyNET_model.meta"):
         self.checkpoint_path = checkpoint_path
         self.meta = meta
-        self.net = createPyNet()
 
     def predict(self, img, mask=None):
         """
@@ -33,6 +35,7 @@ class PyNet():
             mask = np.squeeze(crop_32x(mask[..., np.newaxis]), 2)
             
         I[0][:, :, :3] = img.astype(np.float32)
+        self.net = createPyNet()
         with tf.Session() as sess:
             saver = tf.train.Saver()
             saver.restore(sess, self.checkpoint_path)

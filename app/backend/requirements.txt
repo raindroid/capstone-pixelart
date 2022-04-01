@@ -2,5 +2,7 @@ torchvision
 torch
 pillow
 scikit-image
-nunmpy>=1.22
+nunmpy
+tensorflow
+python-dotenv
 scipy>=1.8
