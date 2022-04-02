@@ -71,7 +71,7 @@ def worker(task):
     size_limit = task["sizeLimit"]
     if size_limit is None or size_limit > image_limit:
         size_limit = image_limit
-    size_limit = int(size_limit * 0.8)
+    size_limit = int(size_limit * 0.6)
 
     base64_decoded = base64.b64decode(img_base64)
     img = Image.open(io.BytesIO(base64_decoded))
@@ -146,7 +146,7 @@ def worker(task):
                     "imageMaskExists": mask_exists,
                     "imageMasksReady": True,
                     "imageMasks": imageMasks,
-                    "taskState": f"generated mask bokeh ({i+1} / {len(mask_results[0])}...",
+                    "taskState": f"generated mask bokeh ({i+1} / {len(masks)}...",
                 }
             )
 
