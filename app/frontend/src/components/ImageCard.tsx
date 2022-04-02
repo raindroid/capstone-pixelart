@@ -73,6 +73,10 @@ const useStyles = makeStyles((theme: Theme, props?: any) => ({
   resButtonGroup: {
     margin: "0 auto",
   },
+  button: {
+    padding: 2,
+    margin: 0
+  }
 }));
 
 export default function ImageCard(props: {
@@ -236,16 +240,18 @@ export default function ImageCard(props: {
                 <Button
                   color="secondary"
                   variant="contained"
+                  className={classes.button}
                   onClick={() => loadMaskImage(0)}
                 >
-                  Depth map
+                  Depth
                 </Button>
                 <Button
                   color="primary"
                   variant="outlined"
+                  className={classes.button}
                   onClick={() => loadBlurImage(0)}
                 >
-                  Depth Blur
+                  Blur 0
                 </Button>
               </div>
               <div className={classes.resButtonGroupParentMask}>
@@ -258,6 +264,7 @@ export default function ImageCard(props: {
                   {maskData?.getTask?.imageMasks?.map(
                     (mask: any, index: number) => (
                       <Button
+                      className={classes.button}
                         onClick={() => loadMaskImage(index + 1)}
                         key={index + 1}
                       >
@@ -274,6 +281,7 @@ export default function ImageCard(props: {
                   {maskData?.getTask?.imageMasks?.map(
                     (mask: any, index: number) => (
                       <Button
+                      className={classes.button}
                         onClick={() => loadBlurImage(index + 1)}
                         key={index + 1}
                       >
