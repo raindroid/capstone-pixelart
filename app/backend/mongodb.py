@@ -14,18 +14,22 @@ def unfinishedTasks():
         )
     return tasks
 
+
 def startTask(task):
     with pymongo.MongoClient("mongodb://localhost:27017/") as client:
         pixelartdb = client["pixelart"]
         imageTasks = pixelartdb["images"]
 
         try:
-            task['taskState'] = "in queue"
+            task["taskState"] = "in queue"
             oldTask = imageTasks.find_one_and_update(
                 {"_id": ObjectId(task["_id"])},
-                {"$set": task},
+                {"$set": {"taskState": "in queue"}},
             )
-            if oldTask.get("taskState", None) == "init":
+            if (
+                oldTask is not None
+                and oldTask.get("taskState", None) == "init"
+            ):
                 return task
         except Exception as e:
             print(e)
@@ -33,7 +37,30 @@ def startTask(task):
         return False
 
 
-def insertBokehTask(bokeh_image: str, modelName: str, iterations: str):
+def insertImage(image: str, shape):
+    with pymongo.MongoClient("mongodb://localhost:27017/") as client:
+        pixelartdb = client["pixelart"]
+        imageTable = pixelartdb["image"]
+        res = None
+        try:
+            res = imageTable.insert_one(
+                {
+                    "content": image,
+                    "size": {
+                        "width": int(shape[1]),
+                        "height": int(shape[0]),
+                    },
+                }
+            )
+        except Exception as e:
+            print(e)
+            traceback.print_exc()
+
+        return res.inserted_id if res is not None else None
+
+
+def insertBokehTask(bokeh_image: str, modelName: str, iterations: str, shape):
+    image_id = insertImage(bokeh_image, shape)
     with pymongo.MongoClient("mongodb://localhost:27017/") as client:
         pixelartdb = client["pixelart"]
         bokehTable = pixelartdb["bokehs"]
@@ -41,7 +68,7 @@ def insertBokehTask(bokeh_image: str, modelName: str, iterations: str):
         try:
             res = bokehTable.insert_one(
                 {
-                    "image": bokeh_image,
+                    "image": image_id,
                     "type": {"modelName": modelName, "iterations": iterations},
                     "taskFinished": True,
                 }

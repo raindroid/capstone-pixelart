@@ -1,17 +1,14 @@
 const mongoose = require("mongoose");
 const BokehTask = require("./BokehTask.model");
 
-const {Schema} = mongoose;
+const { Schema } = mongoose;
 const ImageTaskSchema = new Schema(
   {
-    image: {
-      type: String,
-      required: true,
-    },
+    image: { type: String, required: true },
     sizeLimit: Number,
     size: {
       width: Number,
-      height: Number
+      height: Number,
     },
     taskState: String,
     taskFinished: {
@@ -20,26 +17,19 @@ const ImageTaskSchema = new Schema(
       default: false,
     },
     imageMaskExists: Boolean,
-    imageMaskReady: Boolean,
+    imageMasksReady: Boolean,
     imageMasks: [
       {
-        image: String,
+        image: { type: Schema.Types.ObjectId, ref: "Image" },
         confidence: Number,
+        bbox: [Number],
         imageBokeh: [{ type: Schema.Types.ObjectId, ref: "BokehTask" }],
-        size: {
-          width: Number,
-          height: Number
-        },
       },
     ],
     imageDepthReady: Boolean,
     imageDepth: {
-      image: String,
+      image: { type: Schema.Types.ObjectId, ref: "Image" },
       imageBokeh: [{ type: Schema.Types.ObjectId, ref: "BokehTask" }],
-      size: {
-        width: Number,
-        height: Number
-      },
     },
   },
   { collection: "images" }

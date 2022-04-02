@@ -8,23 +8,26 @@ const typeDefs = gql`
         modelName: String
         iterations: Int
     }
+    type ImageType {
+        id: ID!
+        content: String
+        size: SizeType
+    }
     type ImageBokeh {
         id: ID!
-        image: String
+        image: ImageType
         taskFinished: Boolean
         type: BokehType
-        size: SizeType
     }
     type ImageMask {
-        image: String
+        image: ImageType
         confidence: Float
+        bbox: [Int]
         imageBokeh: [ImageBokeh]
-        size: SizeType
     }
     type ImageDepth {
-        image: String
+        image: ImageType
         imageBokeh: [ImageBokeh]
-        size: SizeType
     }
     type ImageTask {
         id: ID!

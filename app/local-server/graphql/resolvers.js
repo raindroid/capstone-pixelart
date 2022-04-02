@@ -4,6 +4,7 @@ const ImageTask = require("../models/ImageTask.model");
 const crypto = require("crypto");
 const http = require("http");
 const BokehTask = require("../models/BokehTask.model");
+const Image = require("../models/Image.model");
 
 require("dotenv").config();
 
@@ -42,21 +43,32 @@ const resolvers = {
       return callPython();
     },
   },
+  ImageBokeh: {
+    image: async ({ image }, args) => await Image.findById(image),
+  },
   ImageMask: {
     imageBokeh: async ({ imageBokeh }, args) =>
       await imageBokeh.map((id) => {
         return BokehTask.findById(id);
       }),
+    image: async ({ image }, args) => await Image.findById(image),
   },
   ImageDepth: {
     imageBokeh: async ({ imageBokeh }, args) =>
       await imageBokeh.map((id) => {
         return BokehTask.findById(id);
       }),
+    image: async ({ image }, args) => await Image.findById(image),
   },
   Mutation: {
     sendImageRequest: async (_, { image, sizeLimit }) => {
-      sizeLimit = sizeLimit || 1920
+      sizeLimit = sizeLimit || 1920;
+      console.log(
+        `Received new image with size limit ${sizeLimit}, begin with ${image.substring(
+          1,
+          40
+        )}`
+      );
       // check for duplicates
       const preRes = await ImageTask.find({ image, sizeLimit });
 
