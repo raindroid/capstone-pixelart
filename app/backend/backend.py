@@ -99,46 +99,54 @@ def worker(task):
 
     mask_results = getMasks(img)
     imageMasks = []
+
     mask_exists = mask_results[0] is not None and len(mask_results[0]) > 0
     if mask_exists:
-        print(f"WORKER: Found {len(mask_results[0])} masks")
+        masks = []
+        for i, (mask, confidence) in enumerate(zip(*mask_results)):
+            if confidence > 0.4:
+                masks.append((mask, confidence))
+        mask_exists = len(masks) > 0
+
+        print(f"WORKER: Found {len(masks)} masks")
         updateImageTask(
             {
                 "_id": id,
-                "taskState": f"found {len(mask_results[0])} mask(s)...",
+                "taskState": f"found {len(masks)} mask(s)...",
             }
         )
-    for i, (mask, confidence) in enumerate(zip(*mask_results)):
-        if mask is not None and np.max(mask) > 1:
-            mask = mask.astype(np.float32) / 255.0
-        print(f"WORKER: Confi: {confidence}")
-        bokeh = getBokehImage(img, mask=mask)
-        print(f"Mask shape {mask.shape}")
-        mask_id = insertImage(encodeImageBase64(mask), mask.shape)
-        imageMasks.append(
-            {
-                "image": mask_id,
-                "confidence": float(confidence),
-                "bbox": bbox(mask),
-                "imageBokeh": [
-                    insertBokehTask(
-                        encodeImageBase64(bokeh),
-                        pynet_ckpt,
-                        1,
-                        shape=bokeh.shape,
-                    )
-                ],
-            }
-        )
-        updateImageTask(
-            {
-                "_id": id,
-                "imageMaskExists": mask_exists,
-                "imageMasksReady": True,
-                "imageMasks": imageMasks,
-                "taskState": f"generated mask bokeh ({i+1} / {len(mask_results[0])}...",
-            }
-        )
+        for i, (mask, confidence) in enumerate(masks):
+            mask = mask[0]
+            if mask is not None and np.max(mask) > 1:
+                mask = mask.astype(np.float32) / 255.0
+            print(f"WORKER: Confi: {confidence}")
+            bokeh = getBokehImage(img, mask=mask)
+            print(f"Mask shape {mask.shape}")
+            mask_id = insertImage(encodeImageBase64(mask), mask.shape)
+            imageMasks.append(
+                {
+                    "image": mask_id,
+                    "confidence": float(confidence),
+                    "bbox": bbox(mask),
+                    "imageBokeh": [
+                        insertBokehTask(
+                            encodeImageBase64(bokeh),
+                            pynet_ckpt,
+                            1,
+                            shape=bokeh.shape,
+                        )
+                    ],
+                }
+            )
+            updateImageTask(
+                {
+                    "_id": id,
+                    "imageMaskExists": mask_exists,
+                    "imageMasksReady": True,
+                    "imageMasks": imageMasks,
+                    "taskState": f"generated mask bokeh ({i+1} / {len(mask_results[0])}...",
+                }
+            )
 
     depth = getDepthMap(img)
     depth_id = insertImage(encodeImageBase64(depth), depth.shape)

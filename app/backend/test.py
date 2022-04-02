@@ -30,7 +30,6 @@ def getMasks(img):
     mask, confidence = None, None
     try:
         mask, confidence = models[0].predict(img)
-        mask = mask[0]
         print(f"Gnerated mask shape {mask.shape}", end="\t")
     except Exception as e:
         print(e)
@@ -94,7 +93,7 @@ if __name__ == "__main__":
             imageMasks = []
             for mask, confidence in zip(*mask_results):
                 print(f"Confi: {confidence}")
-                bokeh = getBokehImage(img, mask=mask)
+                bokeh = getBokehImage(img, mask=mask[0])
 
             depth = getDepthMap(img)
             bokeh = getBokehImage(img, mask=depth)
