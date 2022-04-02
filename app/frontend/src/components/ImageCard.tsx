@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme: Theme, props?: any) => ({
     margin: "0 auto",
     "& .MuiCardContent-root": {
       paddingBottom: 2,
-    }
+    },
   },
 
   imgPreview: {
@@ -76,8 +76,8 @@ const useStyles = makeStyles((theme: Theme, props?: any) => ({
   button: {
     padding: 2,
     margin: 0,
-    minWidth: 32
-  }
+    minWidth: 32,
+  },
 }));
 
 export default function ImageCard(props: {
@@ -101,7 +101,7 @@ export default function ImageCard(props: {
 
   const convertB64toImage = (b64: string) => `data:image/jpeg;base64,${b64}`;
   useEffect(() => {
-    if (taskData?.getTask && maskData?.getTask) {
+    if (taskData && taskData?.getTask && maskData?.getTask) {
       const newMasks = [
         convertB64toImage(maskData?.getTask?.imageDepth?.image?.content),
       ].concat(
@@ -121,6 +121,9 @@ export default function ImageCard(props: {
       setMasks(newMasks);
       setBlurs(newBlurs);
       setImageOpened(null);
+      console.log(
+        `New blur size ${newBlurs.length}, new mask size ${newMasks.length}`
+      );
     }
   }, [
     maskData?.getTask,
@@ -132,8 +135,9 @@ export default function ImageCard(props: {
     taskData,
   ]);
 
+  let displayImage = selectedImage;
   if (typeof selectedImage !== "string") {
-    selectedImage = URL.createObjectURL(selectedImage);
+    displayImage = URL.createObjectURL(selectedImage);
   }
 
   // Progress updates
@@ -147,7 +151,7 @@ export default function ImageCard(props: {
   if (stateMsg.includes("all done")) progress = 100;
   if (stateMsg.includes("Not found")) progress = 0;
   if (maskData?.getTask.taskFinished) progress = 100;
-  // console.log(maskData);
+  console.log(maskData);
 
   useEffect(() => {
     setImageOpened(null);
@@ -157,7 +161,7 @@ export default function ImageCard(props: {
     setImageOpened({
       type: "mask",
       index: index,
-      prevImage: index > 0 ? index - 1 : null,
+      prevImage: index > (progress === 1000 ? 0 : 1) ? index - 1 : null,
       nextImage: index < masks.length - 1 ? index + 1 : null,
     });
     setShowImage(masks[index]);
@@ -166,7 +170,7 @@ export default function ImageCard(props: {
     setImageOpened({
       type: "blur",
       index: index,
-      prevImage: index > 0 ? index - 1 : null,
+      prevImage: index > (progress === 1000 ? 0 : 1) ? index - 1 : null,
       nextImage: index < blurs.length - 1 ? index + 1 : null,
     });
     setShowImage(blurs[index]);
@@ -195,9 +199,9 @@ export default function ImageCard(props: {
         <CardContent>
           <img
             className={classes.imgPreview}
-            src={selectedImage}
+            src={displayImage}
             alt="preivew"
-            onClick={() => setShowImage(selectedImage)}
+            onClick={() => setShowImage(displayImage)}
           />
           {showImage && (
             <ImageDisplay
@@ -235,63 +239,67 @@ export default function ImageCard(props: {
           )}
         </CardContent>
         <CardActions>
-          {selectedImage && progress === 100 && (
+          {selectedImage && (
             <div className={classes.resButtonGroupParentHorizontal}>
-              <div className={classes.resButtonGroupParentDepth}>
-                <Button
-                  color="secondary"
-                  variant="contained"
-                  className={classes.button}
-                  onClick={() => loadMaskImage(0)}
-                >
-                  Depth
-                </Button>
-                <Button
-                  color="primary"
-                  variant="outlined"
-                  className={classes.button}
-                  onClick={() => loadBlurImage(0)}
-                >
-                  Blur 0
-                </Button>
-              </div>
-              <div className={classes.resButtonGroupParentMask}>
-                <ButtonGroup
-                  color="secondary"
-                  variant="contained"
-                  aria-label="Show Results"
-                  className={classes.resButtonGroup}
-                >
-                  {maskData?.getTask?.imageMasks?.map(
-                    (mask: any, index: number) => (
-                      <Button
-                      className={classes.button}
-                        onClick={() => loadMaskImage(index + 1)}
-                        key={index + 1}
-                      >
-                        {index === 0 && "Mask"} {index + 1}
-                      </Button>
-                    )
-                  )}
-                </ButtonGroup>
-                <ButtonGroup
-                  color="primary"
-                  aria-label="Show Results"
-                  className={classes.resButtonGroup}
-                >
-                  {maskData?.getTask?.imageMasks?.map(
-                    (mask: any, index: number) => (
-                      <Button
-                      className={classes.button}
-                        onClick={() => loadBlurImage(index + 1)}
-                        key={index + 1}
-                      >
-                        {index === 0 && "Blur"} {index + 1}
-                      </Button>
-                    )
-                  )}
-                </ButtonGroup>
-              </div>
+              {progress === 100 && (
+                <div className={classes.resButtonGroupParentDepth}>
+                  <Button
+                    color="secondary"
+                    variant="contained"
+                    className={classes.button}
+                    onClick={() => loadMaskImage(0)}
+                  >
+                    Depth
+                  </Button>
+                  <Button
+                    color="primary"
+                    variant="outlined"
+                    className={classes.button}
+                    onClick={() => loadBlurImage(0)}
+                  >
+                    Blur 0
+                  </Button>
+                </div>
+              )}
+              {progress >= 20 && (
+                <div className={classes.resButtonGroupParentMask}>
+                  <ButtonGroup
+                    color="secondary"
+                    variant="contained"
+                    aria-label="Show Results"
+                    className={classes.resButtonGroup}
+                  >
+                    {maskData?.getTask?.imageMasks?.map(
+                      (mask: any, index: number) => (
+                        <Button
+                          className={classes.button}
+                          onClick={() => loadMaskImage(index + 1)}
+                          key={index + 1}
+                        >
+                          {index === 0 && "Mask"} {index + 1}
+                        </Button>
+                      )
+                    )}
+                  </ButtonGroup>
+                  <ButtonGroup
+                    color="primary"
+                    aria-label="Show Results"
+                    className={classes.resButtonGroup}
+                  >
+                    {maskData?.getTask?.imageMasks?.map(
+                      (mask: any, index: number) => (
+                        <Button
+                          className={classes.button}
+                          onClick={() => loadBlurImage(index + 1)}
+                          key={index + 1}
+                        >
+                          {index === 0 && "Blur"} {index + 1}
+                        </Button>
+                      )
+                    )}
+                  </ButtonGroup>
+                </div>
+              )}
             </div>
           )}
         </CardActions>

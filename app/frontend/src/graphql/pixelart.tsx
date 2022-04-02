@@ -43,6 +43,9 @@ export const GQL_GET_IMAGE_STATE = gql`
         width
         height
       }
+      imageMasks {
+        confidence
+      }
       taskFinished
       imageMaskExists
       imageMasksReady
