@@ -75,7 +75,8 @@ const useStyles = makeStyles((theme: Theme, props?: any) => ({
   },
   button: {
     padding: 2,
-    margin: 0
+    margin: 0,
+    minWidth: 32
   }
 }));
 
@@ -268,7 +269,7 @@ export default function ImageCard(props: {
                         onClick={() => loadMaskImage(index + 1)}
                         key={index + 1}
                       >
-                        Mask {index + 1}
+                        {index === 0 && "Mask"} {index + 1}
                       </Button>
                     )
                   )}
@@ -285,7 +286,7 @@ export default function ImageCard(props: {
                         onClick={() => loadBlurImage(index + 1)}
                         key={index + 1}
                       >
-                        Blur {index + 1}
+                        {index === 0 && "Blur"} {index + 1}
                       </Button>
                     )
                   )}

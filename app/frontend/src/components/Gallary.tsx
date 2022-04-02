@@ -13,7 +13,6 @@ const bgUrl =
 const useStyles = makeStyles((theme: Theme, props?: any) => ({
   root: {
     position: "relative",
-    width: "100%",
     height: "100%",
   },
   bg: {
