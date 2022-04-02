@@ -103,7 +103,9 @@ def worker(task):
     mask_exists = mask_results[0] is not None and len(mask_results[0]) > 0
     if mask_exists:
         masks = []
+        limit = 8
         for i, (mask, confidence) in enumerate(zip(*mask_results)):
+            if i >= limit: break
             if confidence > 0.4:
                 masks.append((mask, confidence))
         mask_exists = len(masks) > 0
