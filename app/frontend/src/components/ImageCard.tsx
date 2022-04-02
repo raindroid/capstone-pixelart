@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme: Theme, props?: any) => ({
 
   imgPreview: {
     maxWidth: 800,
-    maxHeight: 520,
+    maxHeight: 480,
 
     [theme.breakpoints.down("sm")]: {
       maxWidth: 560,
