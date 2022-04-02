@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import PAppBar from "./components/PAppBar";
@@ -16,7 +16,12 @@ import {
   useQuery,
   gql,
 } from "@apollo/client";
-import { GQL_WAKE_PYTHON } from "./graphql/pixelart";
+import {
+  GQL_GET_IMAGETASK_CONTENT,
+  GQL_GET_IMAGE_STATE,
+  GQL_WAKE_PYTHON,
+} from "./graphql/pixelart";
+import { loadSavedImage, saveImage } from "./components/helper";
 
 const client = new ApolloClient({
   uri: "https://pixelart.yucanwu.com/api/",
@@ -46,9 +51,26 @@ function App() {
   const classes = useStyles();
   const [selectedImage, setSelectedImage] = useState<any | null>(imgSample);
   const [renderTaskId, setRenderTaskId] = useState<string | null>(null);
-  const { loading, error, data } = useQuery(GQL_WAKE_PYTHON);
+  const wakePython = useQuery(GQL_WAKE_PYTHON);
+  const { data } = useQuery(GQL_GET_IMAGETASK_CONTENT, {
+    variables: {
+      getTaskId: loadSavedImage(),
+    },
+  });
+  useEffect(() => {
+    const convertB64toImage = (b64: string) => `data:image/jpeg;base64,${b64}`;
+    if (loadSavedImage() && data?.getTask) {
+      setRenderTaskId(data?.getTask.id);
+      setSelectedImage(convertB64toImage(data?.getTask.image));
+      console.log(`Set previous image ${data?.getTask.id}`);
+    }
+  }, [data?.getTask]);
 
-  console.log(data);
+  useEffect(() => {
+    if (renderTaskId) saveImage(renderTaskId);
+  }, [renderTaskId]);
+
+  // console.log(wakePython.data);
   return (
     <ThemeProvider theme={theme}>
       <div className="App">

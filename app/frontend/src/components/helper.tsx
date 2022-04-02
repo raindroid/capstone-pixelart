@@ -31,3 +31,15 @@ export const getBase64 = (file: any) => {
     });
   }
 };
+
+
+export const loadSavedImage = () => {
+  const savedImage = localStorage.getItem("savedImage");
+  console.log(`Get saved image: ${savedImage}`);;
+  return savedImage
+}
+
+export const saveImage = (img: any) => {
+  localStorage.setItem("savedImage", img)
+  console.log(`Saved image: ${img}`);;
+}

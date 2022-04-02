@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import ImageDisplay from "./ImageDisplay";
+import { HorizontalSplit } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme: Theme, props?: any) => ({
   root: {
@@ -26,6 +27,9 @@ const useStyles = makeStyles((theme: Theme, props?: any) => ({
     width: "fit-content",
     height: "fit-content",
     margin: "0 auto",
+    "& .MuiCardContent-root": {
+      paddingBottom: 2,
+    }
   },
 
   imgPreview: {
@@ -92,11 +96,7 @@ export default function ImageCard(props: {
 
   const convertB64toImage = (b64: string) => `data:image/jpeg;base64,${b64}`;
   useEffect(() => {
-    if (
-      taskData &&
-      taskData?.getTask?.taskFinished &&
-      maskData?.getTask?.taskFinished
-    ) {
+    if (taskData?.getTask && maskData?.getTask) {
       const newMasks = [
         convertB64toImage(maskData?.getTask?.imageDepth?.image?.content),
       ].concat(
@@ -118,11 +118,12 @@ export default function ImageCard(props: {
       setImageOpened(null);
     }
   }, [
+    maskData?.getTask,
     maskData?.getTask?.imageDepth?.image,
     maskData?.getTask?.imageDepth?.imageBokeh,
     maskData?.getTask.imageMask,
     maskData?.getTask?.imageMasks,
-    maskData?.getTask?.taskFinished,
+    maskData?.getTask.taskFinished,
     taskData,
   ]);
 
@@ -140,15 +141,14 @@ export default function ImageCard(props: {
   if (stateMsg.includes("generated depth map")) progress = 80;
   if (stateMsg.includes("all done")) progress = 100;
   if (stateMsg.includes("Not found")) progress = 0;
+  if (maskData?.getTask.taskFinished) progress = 100;
   // console.log(maskData);
 
   useEffect(() => {
-    console.log("New Image come in");
     setImageOpened(null);
   }, [selectedImage]);
 
   const loadMaskImage = (index: number) => {
-    console.log(`Loading mask ${index}`);
     setImageOpened({
       type: "mask",
       index: index,
@@ -158,7 +158,6 @@ export default function ImageCard(props: {
     setShowImage(masks[index]);
   };
   const loadBlurImage = (index: number) => {
-    console.log(`Loading blur ${index}`);
     setImageOpened({
       type: "blur",
       index: index,
@@ -168,7 +167,6 @@ export default function ImageCard(props: {
     setShowImage(blurs[index]);
   };
   const moveNextImage = () => {
-    console.log("MOVE NEXT IMAGE");
     if (imageOpened) {
       const { type, index } = imageOpened;
       if (type === "mask" && index < masks.length - 1) {
@@ -179,14 +177,12 @@ export default function ImageCard(props: {
     }
   };
   const movePrevImage = () => {
-    console.log("MOVE PREV IMAGE");
     if (imageOpened) {
       const { type, index } = imageOpened;
       if (type === "mask" && index > 0) loadMaskImage(index - 1);
       else if (type === "blur" && index > 0) loadBlurImage(index - 1);
     }
   };
-  console.log(imageOpened);
 
   return (
     <div className={classes.root}>

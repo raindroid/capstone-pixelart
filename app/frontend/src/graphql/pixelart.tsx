@@ -18,6 +18,20 @@ export const GQL_GET_ALL_IMAGES = gql`
     }
   }
 `;
+export const GQL_GET_IMAGETASK_CONTENT = gql`
+  query ($getTaskId: ID!) {
+    getTask(id: $getTaskId) {
+      id
+      taskState
+      sizeLimit
+      image
+      size {
+        width
+        height
+      }
+    }
+  }
+`;
 
 export const GQL_GET_IMAGE_STATE = gql`
   query ($getTaskId: ID!) {

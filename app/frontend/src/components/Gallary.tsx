@@ -9,8 +9,6 @@ import { GQL_GET_IMAGE_STATE, GQL_GET_MASKS } from "../graphql/pixelart";
 import Typography from "@material-ui/core/Typography";
 const bgUrl =
   "https://images.unsplash.com/photo-1574507355235-5042eb7af735?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
-const imgSample =
-  "https://images.unsplash.com/photo-1564253861670-e99e04070aea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
 
 const useStyles = makeStyles((theme: Theme, props?: any) => ({
   root: {
@@ -67,11 +65,12 @@ export default function Gallery(props: {
     } else {
       stopPolling();
     }
-  }, [renderTaskId, startPolling, stopPolling]);
+  }, [getMaskResults, renderTaskId, startPolling, stopPolling]);
   useEffect(() => {
-    if (data && data.getTask && data.getTask.taskFinished) {
-      stopPolling();
+    if (data && data.getTask) {
       getMaskResults();
+      console.log("Reading masksRes")
+      if ( data.getTask.taskFinished) stopPolling();
     }
   }, [data, getMaskResults, stopPolling]);
 
