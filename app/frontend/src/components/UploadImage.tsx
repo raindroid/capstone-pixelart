@@ -74,7 +74,8 @@ export default function UploadImage(props: {
         type="file"
         onChange={(event: React.ChangeEvent<any>) => {
           console.log(event.target.files[0]);
-          setSelectedImage(event.target.files[0]);
+          if (Boolean(event.target.files[0]))
+            setSelectedImage(event.target.files[0]);
         }}
       />
       <label htmlFor="contained-button-file">
@@ -90,7 +91,8 @@ export default function UploadImage(props: {
         id="icon-button-file"
         onChange={(event: React.ChangeEvent<any>) => {
           console.log(event.target.files[0]);
-          setSelectedImage(event.target.files[0]);
+          if (Boolean(event.target.files[0]))
+            setSelectedImage(event.target.files[0]);
         }}
       />
       <label htmlFor="icon-button-file">

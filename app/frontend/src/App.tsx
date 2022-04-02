@@ -51,6 +51,7 @@ function App() {
   const classes = useStyles();
   const [selectedImage, setSelectedImage] = useState<any | null>(imgSample);
   const [renderTaskId, setRenderTaskId] = useState<string | null>(null);
+  const [init, setInit] = useState(false);
   const wakePython = useQuery(GQL_WAKE_PYTHON);
   const { data } = useQuery(GQL_GET_IMAGETASK_CONTENT, {
     variables: {
@@ -59,10 +60,11 @@ function App() {
   });
   useEffect(() => {
     const convertB64toImage = (b64: string) => `data:image/jpeg;base64,${b64}`;
-    if (loadSavedImage() && data?.getTask) {
+    if (!init && loadSavedImage() && data?.getTask) {
       setRenderTaskId(data?.getTask.id);
       setSelectedImage(convertB64toImage(data?.getTask.image));
       console.log(`Set previous image ${data?.getTask.id}`);
+      setInit(true);
     }
   }, [data?.getTask]);
 
