@@ -32,29 +32,7 @@ export const GQL_GET_IMAGE_STATE = gql`
       taskFinished
       imageMaskExists
       imageMasksReady
-      imageMasks {
-        confidence
-        bbox
-        imageBokeh {
-          id
-          type {
-            modelName
-            iterations
-          }
-          taskFinished
-        }
-      }
       imageDepthReady
-      imageDepth {
-        imageBokeh {
-          id
-          taskFinished
-          type {
-            modelName
-            iterations
-          }
-        }
-      }
     }
   }
 `;
@@ -68,27 +46,47 @@ export const GQL_GET_MASKS = gql`
       imageMaskExists
       imageMasksReady
       imageMasks {
-        image
-        size {
-          width
-          height
+        image {
+          id
+          content
+          size {
+            width
+            height
+          }
         }
         confidence
         imageBokeh {
           id
-          image
+          image {
+            id
+            content
+            size {
+              width
+              height
+            }
+          }
         }
       }
       imageDepthReady
       imageDepth {
-        image
-        size {
-          width
-          height
+        image {
+          id
+          content
+          size {
+            width
+            height
+          }
         }
         imageBokeh {
           id
-          image
+          image {
+            id
+            content
+            size {
+              width
+              height
+            }
+          }
         }
       }
     }

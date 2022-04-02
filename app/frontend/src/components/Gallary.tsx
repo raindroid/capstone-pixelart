@@ -62,10 +62,12 @@ export default function Gallery(props: {
       console.log("error", `GQL_UPLOAD_IMAGE: ${JSON.stringify(e)}`),
   });
   useEffect(() => {
-    if (renderTaskId) {
+    if (Boolean(renderTaskId)) {
       startPolling(POLLING_INTERVAL);
+    } else {
+      stopPolling();
     }
-  }, [renderTaskId, startPolling]);
+  }, [renderTaskId, startPolling, stopPolling]);
   useEffect(() => {
     if (data && data.getTask && data.getTask.taskFinished) {
       stopPolling();
@@ -73,7 +75,6 @@ export default function Gallery(props: {
     }
   }, [data, getMaskResults, stopPolling]);
 
-  console.log(data);
   return (
     <div className={classes.root}>
       <div className={classes.bg} />

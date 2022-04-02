@@ -40,7 +40,7 @@ export default function ImageDisplay(props: {
 
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm")); // Variable for media query
-  console.log(nextImage, prevImage);
+  console.log(nextImage?.substring(1, 10), prevImage?.substring(1, 10));
 
   return (
     <div className={classes.root}>

@@ -98,17 +98,19 @@ export default function ImageCard(props: {
       maskData?.getTask?.taskFinished
     ) {
       const newMasks = [
-        convertB64toImage(maskData?.getTask?.imageDepth?.image),
+        convertB64toImage(maskData?.getTask?.imageDepth?.image?.content),
       ].concat(
         maskData.getTask?.imageMasks?.map((mask?: any) =>
-          convertB64toImage(mask?.image)
+          convertB64toImage(mask?.image?.content)
         )
       );
       const newBlurs = [
-        convertB64toImage(maskData?.getTask?.imageDepth?.imageBokeh[0]?.image),
+        convertB64toImage(
+          maskData?.getTask?.imageDepth?.imageBokeh[0]?.image?.content
+        ),
       ].concat(
         maskData.getTask?.imageMasks?.map((mask?: any) =>
-          convertB64toImage(mask?.imageBokeh[0]?.image)
+          convertB64toImage(mask?.imageBokeh[0]?.image?.content)
         )
       );
       setMasks(newMasks);
@@ -128,6 +130,7 @@ export default function ImageCard(props: {
     selectedImage = URL.createObjectURL(selectedImage);
   }
 
+  // Progress updates
   const stateMsg = taskData?.getTask?.taskState || "Not found";
   let progress: number = 0;
   if (stateMsg.includes("queue")) progress = 10;
@@ -137,13 +140,15 @@ export default function ImageCard(props: {
   if (stateMsg.includes("generated depth map")) progress = 80;
   if (stateMsg.includes("all done")) progress = 100;
   if (stateMsg.includes("Not found")) progress = 0;
-  console.log(maskData);
+  // console.log(maskData);
 
   useEffect(() => {
+    console.log("New Image come in");
     setImageOpened(null);
-  }, [showImage]);
+  }, [selectedImage]);
 
-  const updateMaskImage = (index: number) => {
+  const loadMaskImage = (index: number) => {
+    console.log(`Loading mask ${index}`);
     setImageOpened({
       type: "mask",
       index: index,
@@ -152,7 +157,8 @@ export default function ImageCard(props: {
     });
     setShowImage(masks[index]);
   };
-  const updateBlurImage = (index: number) => {
+  const loadBlurImage = (index: number) => {
+    console.log(`Loading blur ${index}`);
     setImageOpened({
       type: "blur",
       index: index,
@@ -161,30 +167,26 @@ export default function ImageCard(props: {
     });
     setShowImage(blurs[index]);
   };
-
-  const loadMaskImage = (index: number) => {
-    updateMaskImage(index);
-  };
-  const loadBlurImage = (index: number) => {
-    updateBlurImage(index);
-  };
   const moveNextImage = () => {
+    console.log("MOVE NEXT IMAGE");
     if (imageOpened) {
       const { type, index } = imageOpened;
       if (type === "mask" && index < masks.length - 1) {
-        updateMaskImage(index + 1);
+        loadMaskImage(index + 1);
       } else if (type === "blur" && index < blurs.length - 1) {
-        updateBlurImage(index + 1);
+        loadBlurImage(index + 1);
       }
     }
   };
   const movePrevImage = () => {
+    console.log("MOVE PREV IMAGE");
     if (imageOpened) {
       const { type, index } = imageOpened;
-      if (type === "mask" && index > 0) updateMaskImage(index - 1);
-      else if (type === "blur" && index > 0) updateBlurImage(index - 1);
+      if (type === "mask" && index > 0) loadMaskImage(index - 1);
+      else if (type === "blur" && index > 0) loadBlurImage(index - 1);
     }
   };
+  console.log(imageOpened);
 
   return (
     <div className={classes.root}>
@@ -205,15 +207,15 @@ export default function ImageCard(props: {
               nextImage={
                 imageOpened?.nextImage
                   ? imageOpened.type === "mask"
-                    ? masks[imageOpened!.nextImage]
-                    : blurs[imageOpened!.nextImage]
+                    ? masks[imageOpened.nextImage]
+                    : blurs[imageOpened.nextImage]
                   : undefined
               }
               prevImage={
-                imageOpened?.prevImage
+                imageOpened && imageOpened.prevImage !== null
                   ? imageOpened.type === "mask"
-                    ? masks[imageOpened!.prevImage]
-                    : blurs[imageOpened!.prevImage]
+                    ? masks[imageOpened.prevImage]
+                    : blurs[imageOpened.prevImage]
                   : undefined
               }
             />
@@ -259,7 +261,10 @@ export default function ImageCard(props: {
                 >
                   {maskData?.getTask?.imageMasks?.map(
                     (mask: any, index: number) => (
-                      <Button onClick={() => loadMaskImage(index + 1)}>
+                      <Button
+                        onClick={() => loadMaskImage(index + 1)}
+                        key={index + 1}
+                      >
                         Mask {index + 1}
                       </Button>
                     )
@@ -272,7 +277,10 @@ export default function ImageCard(props: {
                 >
                   {maskData?.getTask?.imageMasks?.map(
                     (mask: any, index: number) => (
-                      <Button onClick={() => loadBlurImage(index + 1)}>
+                      <Button
+                        onClick={() => loadBlurImage(index + 1)}
+                        key={index + 1}
+                      >
                         Blur {index + 1}
                       </Button>
                     )
