@@ -161,7 +161,7 @@ export default function ImageCard(props: {
     setImageOpened({
       type: "mask",
       index: index,
-      prevImage: index > (progress === 1000 ? 0 : 1) ? index - 1 : null,
+      prevImage: index > (progress === 100 ? 0 : 1) ? index - 1 : null,
       nextImage: index < masks.length - 1 ? index + 1 : null,
     });
     setShowImage(masks[index]);
@@ -170,7 +170,7 @@ export default function ImageCard(props: {
     setImageOpened({
       type: "blur",
       index: index,
-      prevImage: index > (progress === 1000 ? 0 : 1) ? index - 1 : null,
+      prevImage: index > (progress === 100 ? 0 : 1) ? index - 1 : null,
       nextImage: index < blurs.length - 1 ? index + 1 : null,
     });
     setShowImage(blurs[index]);
