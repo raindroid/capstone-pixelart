@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 const imgSample =
-  "https://images.unsplash.com/photo-1519255122284-c3acd66be602?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=795&q=80";
+  "https://images.unsplash.com/photo-1534260748473-e1c629d04bb0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80";
 
 function App() {
   const classes = useStyles();
