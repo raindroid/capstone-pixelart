@@ -1,8 +1,13 @@
+flask
+pymongo
+scipy>=1.8
+scikit-image
+numpy
+matplotlib
 torchvision
 torch
 pillow
-scikit-image
-nunmpy
 tensorflow
 python-dotenv
-scipy>=1.8
+configparser
+python-dotenv
