@@ -14,11 +14,10 @@ import { AiOutlineRotateLeft, AiOutlineRotateRight } from "react-icons/ai";
 import { MdCancel, MdCompare } from "react-icons/md";
 
 import ReactCompareImage from "react-compare-image";
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 // import Lightbox from "react-image-lightbox";
-import Lightbox from "../git/react-image-lightbox/src";
-import "react-image-lightbox/style.css"; // This only needs to be imported once in your app
+import Lightbox from "./react-image-lightbox/src";
+import "./react-image-lightbox/src/style.css"; // This only needs to be imported once in your app
 
 const useStyles = makeStyles((theme: Theme, props?: any) => ({
   root: {
