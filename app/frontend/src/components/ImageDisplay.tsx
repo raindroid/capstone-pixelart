@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme: Theme, props?: any) => ({
       width: "96% !important",
       height: "96% !important",
       "& img": {
-        objectFit: "scale-down !important",
+        objectFit: "contain !important",
       },
     },
   },
