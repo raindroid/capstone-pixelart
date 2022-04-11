@@ -8,8 +8,10 @@ import {
   useTheme,
 } from "@material-ui/core";
 
-import Lightbox from "react-image-lightbox";
+// import Lightbox from "react-image-lightbox";
+import Lightbox from "../git/react-image-lightbox/src";
 import "react-image-lightbox/style.css"; // This only needs to be imported once in your app
+
 
 const useStyles = makeStyles((theme: Theme, props?: any) => ({
   root: {
@@ -51,7 +53,14 @@ export default function ImageDisplay(props: {
         imagePadding={matches ? 160 : 20}
         onMoveNextRequest={moveNextImage}
         onMovePrevRequest={movePrevImage}
-        reactModalStyle={{ ".ril__toolbar": { top: 100 } }}
+        toolbarButtons={[
+          <Button >Test</Button>
+        ]}
+        reactModalStyle={{
+          overlay: {zIndex: 1200},
+          content: {".ril__inner": {transform: "rotate(90deg)"}},
+          ".ril__toolbar": { top: 0 },
+        }}
       />
     </div>
   );

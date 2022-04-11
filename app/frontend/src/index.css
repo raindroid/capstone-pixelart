@@ -13,11 +13,6 @@ code {
     monospace;
 }
 
-.ril__toolbar {
-  top: 64px !important;
-}
 @media screen and (max-width: 600px) {
-  .ril__toolbar {
-    top: 42px !important;
-  }
+  
 }
