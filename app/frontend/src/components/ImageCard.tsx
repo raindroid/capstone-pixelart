@@ -206,6 +206,7 @@ export default function ImageCard(props: {
           {showImage && (
             <ImageDisplay
               setShowImage={setShowImage}
+              originalImage={selectedImage}
               selectedImage={showImage}
               moveNextImage={moveNextImage}
               movePrevImage={movePrevImage}
